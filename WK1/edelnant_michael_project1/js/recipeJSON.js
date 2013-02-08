@@ -217,14 +217,14 @@
 		} ,
 		//Other
 		"62833322" : {
-		        "rTitle" : 			["Title:" , "Other Recipe 1"],
-		        "rDescription" : 	["Description:", "Needs Description 1"],
+		        "rTitle" : 			["Title:" , "A Jerky Chicken"],
+		        "rDescription" : 	["Description:", "A great Jamaican style dish."],
 		        "rDifficulty" : 	["Level:", "Medium"],
 		        "rCategory" : 		["Category:", "Other"],
 		        "rDate" : 			["Date:", "2013-02-06"],
 		        "rFlavor" : 		["Flavor:", "90"],
-		        "rIngredients" : 	["Ingredients:", "Ingredient 1\,Ingredient 2\,Ingredient 3\,Ingredient 4"],
-		        "rDirections" : 	["Directions:", "This is an example of an Other category recipe. Find some directions."]  
+		        "rIngredients" : 	["Ingredients:", "Onion\,Brown Sugar\,Soy Sauce\,Red Wine\,Fresh Thyme\,Boneless Chicken\,Sliced Pepper"],
+		        "rDirections" : 	["Directions:", "Combine the onion, brown sugar, soy sauce, vinegar, thyme, sesame oil, garlic, allspice and habanero pepper in the container of a food processor or blender. Process until smooth. Place the chicken into a large resealable bag, and pour in 3/4 of the sauce. Squeeze out excess air, and seal. Marinate in the refrigerator for at least one hour. Preheat your oven's broiler. Remove chicken from bag, and discard marinade. Broil chicken for 10 to 15 minutes, turning once to ensure even cooking. Heat remaining sauce in a small pan, and pour over chicken when serving."]  
 		}										
 
 	};	
