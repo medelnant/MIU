@@ -35,7 +35,13 @@ File Name:  index.html
         #####################################-->
         <div data-role="page" id="indexPage">
             <header data-role="header">
-                <h1><a href="#">Holiday Recipes</a></h1>          
+                <h1><a href="#">Holiday Recipes</a></h1>
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#addItemPage">Add Recipe</a></li>
+                        <li><a href="#viewListPage">View Recipes</a></li>
+                    </ul>
+                </div><!-- /navbar -->                           
             </header>
             <section data-role="content">               
                 <p>
@@ -61,6 +67,12 @@ File Name:  index.html
         <div data-role="page" id="addItemPage">
             <header data-role="header">
                 <h1><a href="#">Holiday Recipes</a></h1>          
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#addItemPage">Add Recipe</a></li>
+                        <li><a href="#viewListPage">View Recipes</a></li>
+                    </ul>
+                </div><!-- /navbar -->             
             </header>
             <section data-role="content">
                 <form action="#" method="post" id="addRecipeForm" name="addRecipeForm">
@@ -116,13 +128,13 @@ File Name:  index.html
                             <textarea name="directions" id="directions" class="gRequired"></textarea>
                         </div>                        
                    </fieldset>
-                   <input type="button" value="Save Recipe" id="submitForm"/>
-                   <input type="hidden" name="language" value="English" id="language" />
-                </form>
-                <div data-role="controlgroup">
-                    <a href="#" data-role="button" id="clearData">Clear Data</a>
-                    <a href="#viewListPage" data-role="button">Display Data</a>
-                </div><br />               
+                    <fieldset>
+                        <input type="button" data-role="button" value="Save Recipe" id="submitForm"/>
+                        <input type="button" data-role="button" value="Delete Recipe" id="deleteItem"/>
+                        <input type="hidden" name="language" value="English" id="language" />
+                    </fieldset>
+                    <br />
+                </form>             
                 <ul data-role="listview" data-filter="true" data-inset="true">
                     <li><a href="fourZeroFour.html"><img class="ui-li-icon" src="img/Snack.png" />Snack</a></li>
                     <li><a href="fourZeroFour.html"><img class="ui-li-icon" src="img/Appetizer.png" />Appetizer</a></li>
@@ -138,7 +150,13 @@ File Name:  index.html
         #####################################-->
         <div data-role="page" id="viewListPage">
             <header data-role="header">
-                <h1><a href="#">Holiday Recipes</a></h1>          
+                <h1><a href="#">Holiday Recipes</a></h1>
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#addItemPage">Add Recipe</a></li>
+                        <li><a href="#viewListPage">View Recipes</a></li>
+                    </ul>
+                </div><!-- /navbar -->                            
             </header>
             <section data-role="content" id="mainContent">
               

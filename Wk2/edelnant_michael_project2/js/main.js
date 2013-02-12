@@ -339,7 +339,7 @@ window.addEventListener("DOMContentLoaded", function (){
 	};	
 
 	function editListItem() {			
-		//alert("editListItem Function Entry");
+		alert("editListItem Function Entry");
 		//Get data from localstorage
 		var value = localStorage.getItem(editItemKey);
 		//alert("Value Local Storage = " + value);
@@ -364,16 +364,8 @@ window.addEventListener("DOMContentLoaded", function (){
 		//alert(recipeItem.rCategory[1]);
 		setRadioValue('recipeCat',recipeItem.rCategory[1]);
 
-		//Remove existing listener on save btn
-		//saveRecipe.removeEventListener('click', saveData);
-		
-		//Store Btn within new variable
-		//var updateRecipe = ge('submitForm');
-		
-		//Modify attributes and bind validateRecipe function w/ new EventListener.
-		//updateRecipe.value = 'Update Recipe';
-		//updateRecipe.addEventListener('click', validateRecipe);
-		//updateRecipe.key = this.key;
+		$('#submitForm').val('Update Recipe').button('refresh');
+
 	};
 	
 
@@ -510,7 +502,7 @@ window.addEventListener("DOMContentLoaded", function (){
 		});
 
 		// Zero out all values for new recipe entry 
-		clearRadioValue('recipeCat');
+		//clearRadioValue('recipeCat');
 		$('#recipeTitle').value 		= ''
 		$('#recipeSummary').value 	= ''
 		$('#userDifficulty').value 	= ''
@@ -540,7 +532,7 @@ window.addEventListener("DOMContentLoaded", function (){
 	//Bind Functions
 	saveRecipe.addEventListener('click', validateRecipe);
 	//displayDataBtn.addEventListener('click', buildDataList);
-	clearLocalDataBtn.addEventListener('click', clearLocalData);
+	//clearLocalDataBtn.addEventListener('click', clearLocalData);
 	addIngredientBtn.addEventListener('click', function(e){
   		addIngredient('new');
   		e.preventDefault();
@@ -550,20 +542,25 @@ window.addEventListener("DOMContentLoaded", function (){
 	buildSelect('chooseDifficulty', 'Difficulty', difficultyArray);
 
 	$('#viewListPage').live('pagebeforecreate',function(event){
+		//Prefetch addItempage so elements exist in dom
+		$.mobile.loadPage("#addItemPage", { showLoadMsg: false } );	
+		//Populate Data List
 		buildDataList();
 	});
 	$('#addItemPage').live('pagebeforeshow',function(event){
+		//Prefetch addItempage so elements exist in dom
+		$.mobile.loadPage("#addItemPage", { showLoadMsg: false } );			
+		//Clear Form
 		resetForm();
-		//alert("Page bind here");
 		if(editItemKey.length > 0) {
-			//alert(editItemKey);
-			$('#gIngredientContainer').empty();
-			editListItem();
-			$('#chooseDifficulty').trigger('create');
-			$('#addItemPage').trigger('create');
-		};
+			//Empty ingredient container
 
+			//Grab specific item data & populate form
+			editListItem();
+
+		};			
 	});
+
 
 });
 
