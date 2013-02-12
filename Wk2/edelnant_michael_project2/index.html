@@ -12,14 +12,12 @@ File Name:  index.html
         <meta name="keywords" content="Holidays, Recipes, Thanksgiving, Christmas, New Years, Food, Appetizer, Entree, Dessert" />
         <meta name="description" content="A simple recipe application for the holidays." />
         <meta name="robots" content="index, follow" />
-        <meta name="viewport" content="user-scalable=no, width=device-width" />
-        <meta name="HandheldFriendly" content="true" />
-        <meta name="MobileOptimized" content="320" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Michael Edelnant | Project 1 | Mobile Interfaces and Usability | Full Sail University</title>
 
         <!-- Include Stylesheet -->
         <link rel="stylesheet" href="css/jquery.mobile-1.2.0.css">
-        <!-- <link rel="stylesheet" href="css/styles.css"> -->
+        <link rel="stylesheet" href="css/styles.css">
 
         <!-- Include Dependency Scripts -->
         <script src="js/jquery-1.9.1.min.js"></script>
@@ -35,28 +33,58 @@ File Name:  index.html
         #####################################-->
         <div data-role="page" id="indexPage">
             <header data-role="header">
-                <h1><a href="#">Holiday Recipes</a></h1>
+                <a href="#indexPage" data-role="button" data-transition="slide" data-direction="reverse" data-icon="home" data-iconpos="notext">Home</a>
+                <h1>Holiday Recipes</h1>
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="#addItemPage">Add Recipe</a></li>
-                        <li><a href="#viewListPage">View Recipes</a></li>
+                        <li><a href="#addItemPage" id="addItemLink" data-transition="slide">Add Recipe</a></li>
+                        <li><a href="#viewListPage" data-transition="slide">View Recipes</a></li>
+                        <li><a href="#newsStreamPage" data-transition="slide">News Stream</a></li>
                     </ul>
                 </div><!-- /navbar -->                           
             </header>
             <section data-role="content">               
-                <p>
-                    <strong>Welcome,</strong> <br />
-                    This is a simple application for storing some of your favorite holiday recipes.<br /><br />
-                    <a href="#addItemPage" data-role="button">
-                        Add a Recipe Now!
-                    </a>                 
-                </p>
+                    <strong>Welcome,</strong>
+                    <p>
+                        This is a simple application for storing some of your favorite holiday recipes.
+                    </p>
+                    <a href="#addItemPage" data-role="button">Add a Recipe Now!</a><br />
                 <ul data-role="listview" data-filter="true" data-inset="true">
-                    <li><a href="fourZeroFour.html"><img class="ui-li-icon" src="img/Snack.png" />Snack</a></li>
-                    <li><a href="fourZeroFour.html"><img class="ui-li-icon" src="img/Appetizer.png" />Appetizer</a></li>
-                    <li><a href="fourZeroFour.html"><img class="ui-li-icon" src="img/Entree.png" />Entree</a></li>
-                    <li><a href="fourZeroFour.html"><img class="ui-li-icon" src="img/Dessert.png" />Dessert</a></li>
-                    <li><a href="fourZeroFour.html"><img class="ui-li-icon" src="img/Other.png" />Other</a></li>
+                    <li>
+                        <a href="fourZeroFour.html">
+                            <img src="img/Snack.png" />
+                            <h3>Snack</h3>
+                            <p>Find that perfect snack for a mid day refuel.</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="fourZeroFour.html">
+                            <img src="img/Appetizer.png" />
+                            <h3>Appetizer</h3>
+                            <p>Who doesn't love appetizers? Not this dev!</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="fourZeroFour.html">
+                            <img src="img/Entree.png" />
+                            <h3>Entree</h3>
+                            <p>Browse the most frequented category of this app.</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="fourZeroFour.html">
+                            <img src="img/Dessert.png" />
+                            <h3>Dessert</h3>
+                            <p>The most favorited category aside from entrees.</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="fourZeroFour.html">
+                            <img src="img/Other.png" />
+                            <h3>Other</h3>
+                            <p>We care about the recipes that don't fit in.</p>
+                        </a>
+                    </li>
                 </ul>                
             </section>
         </div> <!-- /indexPage -->
@@ -66,11 +94,13 @@ File Name:  index.html
         #####################################-->
         <div data-role="page" id="addItemPage">
             <header data-role="header">
-                <h1><a href="#">Holiday Recipes</a></h1>          
+                <a href="#indexPage" data-role="button" data-icon="home" data-transition="slide" data-direction="reverse" data-iconpos="notext">Home</a>
+                <h1>Holiday Recipes</h1>      
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="#addItemPage">Add Recipe</a></li>
-                        <li><a href="#viewListPage">View Recipes</a></li>
+                        <li><a href="#addItemPage" id="addItemLink" class="ui-btn-active ui-state-persist" data-transition="slide">Add Recipe</a></li>
+                        <li><a href="#viewListPage" data-transition="slide">View Recipes</a></li>
+                        <li><a href="#newsStreamPage" data-transition="slide">News Stream</a></li>
                     </ul>
                 </div><!-- /navbar -->             
             </header>
@@ -136,43 +166,84 @@ File Name:  index.html
                     <br />
                 </form>             
                 <ul data-role="listview" data-filter="true" data-inset="true">
-                    <li><a href="fourZeroFour.html"><img class="ui-li-icon" src="img/Snack.png" />Snack</a></li>
-                    <li><a href="fourZeroFour.html"><img class="ui-li-icon" src="img/Appetizer.png" />Appetizer</a></li>
-                    <li><a href="fourZeroFour.html"><img class="ui-li-icon" src="img/Entree.png" />Entree</a></li>
-                    <li><a href="fourZeroFour.html"><img class="ui-li-icon" src="img/Dessert.png" />Dessert</a></li>
-                    <li><a href="fourZeroFour.html"><img class="ui-li-icon" src="img/Other.png" />Other</a></li>
+                    <li>
+                        <a href="fourZeroFour.html">
+                            <img src="img/Snack.png" />
+                            <h3>Snack</h3>
+                            <p>Find that perfect snack for a mid day refuel.</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="fourZeroFour.html">
+                            <img src="img/Appetizer.png" />
+                            <h3>Appetizer</h3>
+                            <p>Who doesn't love appetizers? Not this dev!</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="fourZeroFour.html">
+                            <img src="img/Entree.png" />
+                            <h3>Entree</h3>
+                            <p>Browse the most frequented category of this app.</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="fourZeroFour.html">
+                            <img src="img/Dessert.png" />
+                            <h3>Dessert</h3>
+                            <p>The most favorited category aside from entrees.</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="fourZeroFour.html">
+                            <img src="img/Other.png" />
+                            <h3>Other</h3>
+                            <p>We care about the recipes that don't fit in.</p>
+                        </a>
+                    </li>
                 </ul>                                   
             </section>                   
         </div>
-
         <!-- ###################################
         View List Page
         #####################################-->
         <div data-role="page" id="viewListPage">
             <header data-role="header">
-                <h1><a href="#">Holiday Recipes</a></h1>
+                <a href="#indexPage" data-role="button" data-icon="home" data-transition="slide" data-direction="reverse" data-iconpos="notext">Home</a>
+                <h1>Holiday Recipes</h1>
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="#addItemPage">Add Recipe</a></li>
-                        <li><a href="#viewListPage">View Recipes</a></li>
+                        <li><a href="#addItemPage" id="addItemLink" data-transition="slide">Add Recipe</a></li>
+                        <li><a href="#viewListPage" class="ui-btn-active ui-state-persist" data-transition="slide">View Recipes</a></li>
+                        <li><a href="#newsStreamPage" data-transition="slide">News Stream</a></li>
                     </ul>
                 </div><!-- /navbar -->                            
             </header>
             <section data-role="content" id="mainContent">
-              
-            </section>
-            <section data-role="content">
-                <ul data-role="listview" data-filter="true" data-inset="true">
-                    <li><a href="fourZeroFour.html"><img class="ui-li-icon" src="img/Snack.png" />Snack</a></li>
-                    <li><a href="fourZeroFour.html"><img class="ui-li-icon" src="img/Appetizer.png" />Appetizer</a></li>
-                    <li><a href="fourZeroFour.html"><img class="ui-li-icon" src="img/Entree.png" />Entree</a></li>
-                    <li><a href="fourZeroFour.html"><img class="ui-li-icon" src="img/Dessert.png" />Dessert</a></li>
-                    <li><a href="fourZeroFour.html"><img class="ui-li-icon" src="img/Other.png" />Other</a></li>
-                </ul>   
-            </section>
-            <p>This page will populate with my recipe list</p>         
+                <ul id="dataList" data-role="listview" data-filter="true" data-inset="true" data-split-icon="gear">
+
+                </ul>
+                <a href="#indexPage" data-role="button" id="clearDataLink">Clear Data</a><br />            
+            </section>     
         </div>
-
-
+        <!-- ###################################
+        News Stream Page
+        #####################################-->
+        <div data-role="page" id="newsStreamPage">
+            <header data-role="header">
+                <a href="#indexPage" data-role="button" data-icon="home" data-transition="slide" data-direction="reverse" data-iconpos="notext">Home</a>
+                <h1>Holiday Recipes</h1>
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#addItemPage" id="addItemLink" data-transition="slide">Add Recipe</a></li>
+                        <li><a href="#viewListPage" class="ui-btn-active ui-state-persist" data-transition="slide">View Recipes</a></li>
+                        <li><a href="#newsStreamPage" data-transition="slide">News Stream</a></li>
+                    </ul>
+                </div><!-- /navbar -->                            
+            </header>
+            <section data-role="content" id="mainContent">
+                <p>This is the news stream page.</p>          
+            </section>     
+        </div>               
     </body>
 </html>

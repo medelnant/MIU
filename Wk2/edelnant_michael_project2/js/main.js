@@ -193,28 +193,14 @@ window.addEventListener("DOMContentLoaded", function (){
 	};
 
 	function buildDataList() {
+		var list = $('#dataList');
+		list.empty();
 		editItemKey = "";
 		//If no data, pre-populate with JSON
 		if (!localStorage.length) {
 			alert("There are no recipes saved so i'm going to populate the list for you")
 			prePopList(recipeJSON);			
-		};
-
-		//Define contentArea
-		var pageContainer = $('#mainContent');
-		pageContainer.empty();
-		
-
-		//Define unordered list
-		var list = document.createElement('ul');
-		list.setAttribute('id', 'dataList');
-		list.setAttribute('data-role', 'listview');
-		list.setAttribute('data-filter', 'true');
-		list.setAttribute('data-inset', 'true');
-		list.setAttribute('data-split-icon', 'gear');
-		
-		//Add list to container
-		pageContainer.append(list);	
+		};	
 
 		//Loop through all localstorage items
 		for(var i = 0, j=localStorage.length; i<j; i++ ){
@@ -293,7 +279,8 @@ window.addEventListener("DOMContentLoaded", function (){
 
 
 			//Append Each List Item
-			list.appendChild(listItem);
+			list.append(listItem);
+			$('#dataList').listview('refresh');
 		}; 	
 
 
@@ -316,6 +303,7 @@ window.addEventListener("DOMContentLoaded", function (){
 		//Build Edit Btn
 		editBtn.key 		= itemKey;
 		editBtn.href 		= '#addItemPage';
+		editBtn.setAttribute('data-transition','slide')
 		editBtn.innerHTML 	= 'Edit';
 		editBtn.addEventListener('click', setItemKey);
 
@@ -333,13 +321,18 @@ window.addEventListener("DOMContentLoaded", function (){
 
 	//Set Global itemKey
 	function setItemKey() {
-		//alert("setItemKey Function Entry");
 		editItemKey = this.key;
+	};
+
+	//Clear Global itemKey
+	function clearItemKey() {
+		alert("clearBeingCalled");
+		editItemKey = '';
 		//alert("Edit Item Key = " + editItemKey);
-	};	
+	};			
 
 	function editListItem() {			
-		alert("editListItem Function Entry");
+		//alert("editListItem Function Entry");
 		//Get data from localstorage
 		var value = localStorage.getItem(editItemKey);
 		//alert("Value Local Storage = " + value);
@@ -365,7 +358,8 @@ window.addEventListener("DOMContentLoaded", function (){
 		setRadioValue('recipeCat',recipeItem.rCategory[1]);
 
 		$('#submitForm').val('Update Recipe').button('refresh');
-
+		//Set editItemKey to ''
+		editItemKey = '';
 	};
 	
 
@@ -462,9 +456,6 @@ window.addEventListener("DOMContentLoaded", function (){
 			saveData(this.key);
 		};
 
-
-
-
 	};
 
 	//User Initiated Delete Local Storage. Using confirmBox.
@@ -483,6 +474,7 @@ window.addEventListener("DOMContentLoaded", function (){
         	};
 
 		};
+		
 	};
     
 
@@ -490,7 +482,7 @@ window.addEventListener("DOMContentLoaded", function (){
 	//if validation is succesful
 	function resetForm() {
 		radioList2 = $('subList');	
-		errorBox.style.display = 'none';
+		errorBox.hide();
 		//remove class of error
 		radioList2.prop('class', '');
 
@@ -502,24 +494,25 @@ window.addEventListener("DOMContentLoaded", function (){
 		});
 
 		// Zero out all values for new recipe entry 
-		//clearRadioValue('recipeCat');
-		$('#recipeTitle').value 		= ''
-		$('#recipeSummary').value 	= ''
-		$('#userDifficulty').value 	= ''
-		$('#chooseDate').value 		= ''
-		$('#flavorRange').value 		= ''
-		$('#directions').value 		= ''
-		$('#submitForm').value 		= 'Save Recipe';
+		clearRadioValue('recipeCat');
+		$('#recipeTitle').val('').trigger("create");
+		$('#recipeSummary').val('').trigger("create");
+		$('#userDifficulty').val('').selectmenu("refresh");
+		$('#chooseDate').val('').trigger("create");
+		$('#flavorRange').val('').slider("refresh");
+		$('#directions').val('').trigger("create");
+		$('#submitForm').val('Save Recipe').button('refresh');
 		$('#gIngredientContainer').empty();
 	};
 
 
 	//Defaults
-		var saveRecipe 				= ge('submitForm');
-		var displayDataBtn 			= ge('displayData');
-		var clearLocalDataBtn 		= ge('clearData');
-		var addIngredientBtn		= ge('gAddIngredient');
-		var errorBox				= ge('errorBox');
+		var saveRecipe 				= $('#submitForm');
+		var displayDataBtn 			= $('#displayData');
+		var addIngredientBtn		= $('#gAddIngredient');
+		var errorBox				= $('#errorBox');
+		var linkAddItem				= $('#addItemLink');
+		var clearDataLink			= $('#clearDataLink');
 		var btnListener 			= true;
 		var editItemKey				= "";
 		var recipe 					= {};	
@@ -530,10 +523,9 @@ window.addEventListener("DOMContentLoaded", function (){
 
 
 	//Bind Functions
-	saveRecipe.addEventListener('click', validateRecipe);
-	//displayDataBtn.addEventListener('click', buildDataList);
-	//clearLocalDataBtn.addEventListener('click', clearLocalData);
-	addIngredientBtn.addEventListener('click', function(e){
+	clearDataLink.bind('click', clearLocalData);
+	saveRecipe.bind('click', validateRecipe);
+	addIngredientBtn.bind('click', function(e){
   		addIngredient('new');
   		e.preventDefault();
 	});
@@ -541,24 +533,25 @@ window.addEventListener("DOMContentLoaded", function (){
 	//Create Select Element Dropdown.
 	buildSelect('chooseDifficulty', 'Difficulty', difficultyArray);
 
-	$('#viewListPage').live('pagebeforecreate',function(event){
+	$('#viewListPage').on('pagebeforeshow',function(event){
 		//Prefetch addItempage so elements exist in dom
 		$.mobile.loadPage("#addItemPage", { showLoadMsg: false } );	
 		//Populate Data List
 		buildDataList();
 	});
-	$('#addItemPage').live('pagebeforeshow',function(event){
-		//Prefetch addItempage so elements exist in dom
-		$.mobile.loadPage("#addItemPage", { showLoadMsg: false } );			
-		//Clear Form
+	
+	$('#addItemPage').on('pagebeforeshow',function(event){
 		resetForm();
 		if(editItemKey.length > 0) {
-			//Empty ingredient container
-
 			//Grab specific item data & populate form
 			editListItem();
+			$('addItemLink').html('Update Recipe').trigger('create');
+		};
+		$(this).trigger('create');			
+	});
 
-		};			
+	$(document).bind("mobileinit", function() {
+    	$.mobile.defaultPageTransition = 'slide';
 	});
 
 
