@@ -1,0 +1,44 @@
+.ui-li-has-thumb .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-thumb {
+	padding-left: 45px;
+}
+.ui-li-thumb, .ui-listview .ui-li-icon {
+	left: 5px;
+	top: 22px;
+}
+.ui-page { -webkit-backface-visibility: hidden; }
+
+#formLinkGroup {width: 100%;}
+#errorBox {
+	background: #ff3019; /* Old browsers */
+	background: -moz-linear-gradient(top,  #ff3019 0%, #cf0404 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff3019), color-stop(100%,#cf0404)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #ff3019 0%,#cf0404 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #ff3019 0%,#cf0404 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #ff3019 0%,#cf0404 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #ff3019 0%,#cf0404 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3019', endColorstr='#cf0404',GradientType=0 ); /* IE6-9 */
+	color: #fff;
+	margin: 1em 0 0 0;
+	box-shadow: 0 .1em .5em rgba(0, 0, 0, 0.5);
+	border: 2px solid #CF2219;
+	border-radius: .5em;
+	display: none;
+	padding: 1em;
+	list-style: none;
+}
+/*Error Styling*/
+.error,
+.error[type="text"] {border: 1px solid #CF2219 !important; box-shadow: 0 0 1em rgba(175, 54, 54, .25);}
+
+#subList.error {background: rgba(255,255,255,.45);}
+.activeError li {background: rgba(255,255,255,.45); padding: 1em; font-size: 1.5em; color: #CF2219;}
+
+.error:focus,
+.error[type="text"]:focus {box-shadow: 0 0 1em rgba(175, 54, 54, .25);}
+
+.error::-webkit-input-placeholder{color: #AF2020;}
+.error:-moz-placeholder {color: #AF2020;}
+#subList.error {background: rgba(255,255,255,.45);}
+.activeError {border: 1px solid #CF2219 !important; background: rgba(255,255,255,.45); padding: .5em; font-size: 1em; color: #CF2219; border-radius: .5em;}
+
+h5 {margin: 0;padding: 0;}

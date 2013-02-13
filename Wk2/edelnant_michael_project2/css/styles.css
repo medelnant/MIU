@@ -1,8 +1,0 @@
-.ui-li-has-thumb .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-thumb {
-	padding-left: 45px;
-}
-.ui-li-thumb, .ui-listview .ui-li-icon {
-	left: 5px;
-	top: 22px;
-}
-.ui-page { -webkit-backface-visibility: hidden; }

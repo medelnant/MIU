@@ -27,7 +27,6 @@ window.addEventListener("DOMContentLoaded", function (){
 		var selectElement = document.createElement('select');
 		selectElement.setAttribute('id', 'userDifficulty');
 		selectElement.setAttribute('class','gRequired');
-		selectElement.setAttribute('data-native-menu', 'false');
 		for(var i=0; i< argArray.length; i++) {
 			var optionElement = document.createElement('option');
 			optionElement.setAttribute('value', argArray[i]);
@@ -130,6 +129,7 @@ window.addEventListener("DOMContentLoaded", function (){
 	};
 
 	function addIngredient(processValue) {
+		$('.activeError').remove();
 		var uniqueKey = Math.floor(Math.random()*100000001);
 		var container = $('#gIngredientContainer');
 		var ingredientListItem = document.createElement('li');
@@ -343,9 +343,9 @@ window.addEventListener("DOMContentLoaded", function (){
 		var ingredientArray = recipeItem.rIngredients[1].toString().split(',');
 
 		for(i=0; i < ingredientArray.length; i++ ) {
-			addIngredient(ingredientArray[i]);
+		addIngredient(ingredientArray[i]);
 		};
-
+		$("#userDifficulty").selectmenu();
 		//populate
 		$("#recipeTitle").val(recipeItem.rTitle[1]).trigger("create");
 		$("#recipeSummary").val(recipeItem.rDescription[1]).trigger("create");
@@ -358,20 +358,25 @@ window.addEventListener("DOMContentLoaded", function (){
 		setRadioValue('recipeCat',recipeItem.rCategory[1]);
 
 		$('#submitForm').val('Update Recipe').button('refresh');
+		$('#deleteItem').on('click', function(event, ui) {
+			deleteListItem(deleteItemKey);
+		});
 		//Set editItemKey to ''
 		editItemKey = '';
 	};
 	
 
-	function deleteListItem(){
+	function deleteListItem(itemKey){
+		alert(itemKey);
 		var verify = confirm('Are you sure you want to delete this recipe?')
 		if(verify) {
-			localStorage.removeItem(this.key);
+			localStorage.removeItem(itemKey);
+			resetForm();
 			alert("Recipe has been deleted");
-			window.location.reload();
 		} else {
 			alert('Recipe was not deleted');
 		};
+		deleteItemKey = '';
 	};
 
 	function validateRecipe(e) {
@@ -383,7 +388,7 @@ window.addEventListener("DOMContentLoaded", function (){
 		var ingredientContainer = $('#gIngredientContainer');
 		//Reset Error
 
-		errorBox.innerHTML = '';
+		errorBox.empty();
 		errorArray = [];
 
 		for(var i = 0; i < reqElements.length; i++) {
@@ -403,6 +408,8 @@ window.addEventListener("DOMContentLoaded", function (){
 			    		errorArray.push('Please provide a small description.');
 				    	break;
 			    	case 'userDifficulty':
+			    		$('#userDifficulty').removeClass('error')
+			    		$('.ui-select div').addClass('error');
 			    		errorArray.push('Please select a difficulty level.');
 				    	break;
 			    	case 'ingredients':
@@ -416,38 +423,40 @@ window.addEventListener("DOMContentLoaded", function (){
 		            return false;
 				};
 			};
-
+			$('#userDifficulty').selectmenu();
+			$('#userDifficulty').selectmenu('refresh');
 			$('addItemPage').trigger('updatelayout');
 
 		};
 		
-		radioList = document.getElementById('subList');
+		radioList = $('.ui-controlgroup label');
 		if(checkRadios('recipeCat')) {
-			radioList.className = '';
+			radioList.removeClass('error');
 		} else {
 			//Add the class of error
-			radioList.className += 'error';
+			radioList.addClass('error');
 			errorArray.push('Please provide a category.');			
 		};
 		
 		//Check for no ingredients
-		if(ingredientContainer.innerHTML == '') {
-			var ingErrorLi = document.createElement('li');
-			ingErrorLi.className = 'error errorListItem';
+		if(ingredientContainer.is(':empty')) {
+			alert("help");
+			var ingErrorLi = document.createElement('div');
+			ingErrorLi.className = 'activeError';
 			ingErrorLi.innerHTML = 'Please provide atleast one ingredient';
-			ingredientContainer.className = 'activeError';
-			ingredientContainer.appendChild(ingErrorLi);
+			ingredientContainer.before(ingErrorLi)
+			//ingredientContainer.append(ingErrorLi);
 			errorArray.push('Please provide atleast one ingredient.')
 		};
 
 
 		//Handle errorBox messages via errorArray.
 		if(errorArray.length > 0) {
-			errorBox.style.display = 'block';
+			errorBox.show();
 			for(i = 0; i < errorArray.length; i++) {
 				var errorListItem = document.createElement('li');
 				errorListItem.innerHTML = errorArray[i];
-				errorBox.appendChild(errorListItem);
+				errorBox.append(errorListItem);
 			};
 			window.scrollTo(0,0);
 			e.preventDefault();
@@ -481,18 +490,28 @@ window.addEventListener("DOMContentLoaded", function (){
 	//Clear form after submit. Eventually will only be called 
 	//if validation is succesful
 	function resetForm() {
-		radioList2 = $('subList');	
+			
+		//Clear error styling
 		errorBox.hide();
-		//remove class of error
-		radioList2.prop('class', '');
-
+		$('.error').removeClass('error');
+		$('.activeError').remove();
 
 		//Remove Error Styling and Clear Error Report
 		var reqElements = $('#gRequired');
 		reqElements.each(function(index){
 			$(this).prop('class', 'gRequired');
-		});
+		});		
+		
+		//Clear Classes
+		radioList2 = $('subList');
+		radioList2.prop('class', '');
 
+		//Set Delete Button to disable again
+		$('#deleteItem').button('disable').button('refresh');
+
+		//Re-instantiate selectmenu widget
+		$('#userDifficulty').selectmenu()
+		
 		// Zero out all values for new recipe entry 
 		clearRadioValue('recipeCat');
 		$('#recipeTitle').val('').trigger("create");
@@ -501,21 +520,23 @@ window.addEventListener("DOMContentLoaded", function (){
 		$('#chooseDate').val('').trigger("create");
 		$('#flavorRange').val('').slider("refresh");
 		$('#directions').val('').trigger("create");
-		$('#submitForm').val('Save Recipe').button('refresh');
+		$('#submitForm').val('Save').button('refresh');
 		$('#gIngredientContainer').empty();
 	};
 
 
 	//Defaults
-		var saveRecipe 				= $('#submitForm');
-		var displayDataBtn 			= $('#displayData');
-		var addIngredientBtn		= $('#gAddIngredient');
-		var errorBox				= $('#errorBox');
-		var linkAddItem				= $('#addItemLink');
-		var clearDataLink			= $('#clearDataLink');
-		var btnListener 			= true;
-		var editItemKey				= "";
-		var recipe 					= {};	
+	var saveRecipe 				= $('#submitForm');
+	var displayDataBtn 			= $('#displayData');
+	var addIngredientBtn		= $('#gAddIngredient');
+	var errorBox				= $('#errorBox');
+	var linkAddItem				= $('#addItemLink');
+	var clearDataLink			= $('#clearDataLink');
+	var btnListener 			= true;
+	var deleteItem 				= $("#deleteItem");
+	var editItemKey				= "";
+	var deleteItemKey			= "";
+	var recipe 					= {};	
 		
 	//Define array for select
 	var difficultyArray = ['-- Choose a Difficulty --','Very Easy', 'Easy', 'Medium', 'Hard', 'Very Hard'];
@@ -541,15 +562,25 @@ window.addEventListener("DOMContentLoaded", function (){
 	});
 	
 	$('#addItemPage').on('pagebeforeshow',function(event){
+		$.mobile.defaultHomeScroll = 0.
+		//Always reset page on pagebeforeshow
 		resetForm();
+		//Disable delete Button on pagebeforeshow
+		$('#deleteItem').button('disable').button('refresh');
 		if(editItemKey.length > 0) {
+			//Pass key around for deleteListItem Function to pull from
+			deleteItemKey = editItemKey;
+			$('#deleteItem').button('enable').button('refresh');
 			//Grab specific item data & populate form
 			editListItem();
-			$('addItemLink').html('Update Recipe').trigger('create');
+			//Change text for save/update button
+			$('addItemLink').html('Update').trigger('create');
 		};
+		//Attempt a redrawing page. Not sure this is necessary but keeping it in for failsafe.
 		$(this).trigger('create');			
 	});
 
+	//Specify JQM Global Defaults
 	$(document).bind("mobileinit", function() {
     	$.mobile.defaultPageTransition = 'slide';
 	});
