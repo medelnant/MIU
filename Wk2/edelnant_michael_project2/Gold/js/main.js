@@ -80,7 +80,9 @@ window.addEventListener("DOMContentLoaded", function (){
 		resetForm();
 		
 		alert("Your recipe is saved! Keep em coming!");
-		$.mobile.changePage("#viewListPage"), {transition: "slide"};
+		$.mobile.changePage("#viewListPage"), {
+			transition: "slide"
+		};
 
 	};
 	
@@ -192,19 +194,25 @@ window.addEventListener("DOMContentLoaded", function (){
 
 	};
 
+	
 	function buildDataList() {
+		//Define Wrapping Element
 		var list = $('#dataList');
+
+		//Empty Wrapping Element
 		list.empty();
-		editItemKey = "";
+
+		//Cleat Global Edit Item Key
+		editItemKey = '';
+
 		//If no data, pre-populate with JSON
 		if (!localStorage.length) {
 			alert("There are no recipes saved so i'm going to populate the list for you")
 			prePopList(recipeJSON);			
-		};	
+		};
 
-		//Loop through all localstorage items
+		//Loop through all localstorage items and draw to stage
 		for(var i = 0, j=localStorage.length; i<j; i++ ){
-			
 			//Define key per loopIndex
 			var storageKey = localStorage.key(i);
 
@@ -215,64 +223,29 @@ window.addEventListener("DOMContentLoaded", function (){
 
 			//Define listItem
 			var listItem 				= document.createElement('li');
-			var listItemTitleWrapper 	= document.createElement('a');
+			var listItemTitleAnchor 	= document.createElement('a')
 			var listThumbNail			= document.createElement('img');
-			var listItemTitle 			= document.createElement('h3');
-			var listItemDescription 	= document.createElement('p');
-			var listSubList 			= document.createElement('ul');
+			var listItemTitle 			= document.createElement('h3')
+			var listItemDescription 	= document.createElement('p')
 
 			listThumbNail.setAttribute('src', 'img/' + itemCategory + '.png');
 			listThumbNail.setAttribute('class', 'ul-li-icon');
 
-			//Loop through each storage object. Key pair values.
-			for(var key in storageObject) {
-				if(key === 'rTitle') {
-					listItemTitle.innerHTML = storageObject[key][1];
-				} else if (key === 'rDescription') {
-					listItemDescription.innerHTML = storageObject[key][1];
-				} else if (key === 'rIngredients') {
-					
-					var subListItem 		= document.createElement('li');
-					var subListItemTitle	= document.createElement('strong');
-					var orderedListIng		= document.createElement('ol');
+			console.log(storageObject.rTitle[1]);
 
-					var ingArray = storageObject[key][1].toString().split(',');
-					for(k=0; k < ingArray.length; k++) {
-						var orderedListIngLi	= document.createElement('li');
-						orderedListIngLi.innerHTML = ingArray[k];
-						orderedListIng.appendChild(orderedListIngLi);
-					};
+			//Write Values
+			listItemTitleAnchor.setAttribute('href', '#viewItemPage');
+			listItemTitleAnchor.setAttribute('data-transition', 'slide');
+			listItemTitleAnchor.key 		= storageKey;
+			listItemTitleAnchor.className 	= 'recipeLink';
+			listItemTitle.innerHTML 		= storageObject.rTitle[1];
+			listItemDescription.innerHTML 	= storageObject.rDescription[1]
 
-					subListItemTitle.innerHTML = storageObject[key][0] + "&nbsp;";
-					subListItem.appendChild(subListItemTitle);
-					subListItem.appendChild(orderedListIng);
-					//Add subListItem to subList
-					listSubList.appendChild(subListItem);
-				
-				} else {
-					var subListItem 		= document.createElement('li');
-					var subListItemTitle 	= document.createElement('strong');
-					var subListItemValue 	= document.createElement('span');
-
-					//Print strings to corresponding elements
-					subListItemTitle.innerHTML = storageObject[key][0] + "&nbsp;";
-					subListItemValue.innerHTML = storageObject[key][1];
-
-					//Add elements to parent list item
-					subListItem.appendChild(subListItemTitle);
-					subListItem.appendChild(subListItemValue);					
-					
-					//Add subListItem to subList
-					listSubList.appendChild(subListItem);
-				};
-			};
-			
 			//Build Main List Item by adding individual elements
-			listItemTitleWrapper.appendChild(listThumbNail);
-			listItemTitleWrapper.appendChild(listItemTitle);
-			listItemTitleWrapper.appendChild(listItemDescription);
-			listItem.appendChild(listItemTitleWrapper);
-			listItem.appendChild(listSubList);
+			listItemTitleAnchor.appendChild(listThumbNail);
+			listItemTitleAnchor.appendChild(listItemTitle);
+			listItemTitleAnchor.appendChild(listItemDescription);
+			listItem.appendChild(listItemTitleAnchor);
 
 			//Add Links
 			buildListItemLinks(storageKey, listItem);
@@ -280,11 +253,47 @@ window.addEventListener("DOMContentLoaded", function (){
 
 			//Append Each List Item
 			list.append(listItem);
-			$('#dataList').listview('refresh');
-		}; 	
-
-
+			list.listview('refresh');			
+		};
 	};
+
+	function buildItemPage() {
+		var recipeContainer 	= $('#viewItemContent');
+		var recipe 				= JSON.parse(localStorage.getItem(editItemKey));
+
+		//Initially Empty Container when this function gets processed
+		recipeContainer.empty();
+		
+		//Create Page Elements
+		pageTitle 				= document.createElement('h2');
+		pageDescription			= document.createElement('p');
+		pageDifficulty			= document.createElement('p');
+		pageCategory			= document.createElement('p');
+		pageDate				= document.createElement('p');
+		pageFlavor				= document.createElement('p');
+		pageDirections			= document.createElement('p');
+
+		//Write values to specific elements
+		pageTitle.innerHTML 			= recipe.rTitle[1];
+		pageDescription.innerHTML 		= recipe.rDescription[1];
+		pageDifficulty.innerHTML 		= "<strong>Difficulty:</strong> " + recipe.rDifficulty[1];
+		pageCategory.innerHTML 			= "<strong>Category:</strong> " + recipe.rCategory[1];
+		pageDate.innerHTML				= "<strong>Date:</strong> " + recipe.rDate[1];
+		pageFlavor.innerHTML			= "<strong>Flavor:</strong> " + recipe.rFlavor[1];
+		pageDirections.innerHTML		= "<strong>Directions:</strong><br />" + recipe.rDirections[1];
+
+		//Put Page Together
+		recipeContainer.append(pageTitle);
+		recipeContainer.append(pageDate);		
+		recipeContainer.append(pageDescription);
+		recipeContainer.append(pageCategory);
+		recipeContainer.append(pageFlavor);				
+		recipeContainer.append(pageDifficulty);
+		recipeContainer.append(pageDirections);
+
+		editItemKey = '';
+	};
+	
 
 
 	//Nothing has been saved by user. Pre-populate the list with 
@@ -357,7 +366,7 @@ window.addEventListener("DOMContentLoaded", function (){
 		//alert(recipeItem.rCategory[1]);
 		setRadioValue('recipeCat',recipeItem.rCategory[1]);
 
-		$('#submitForm').val('Update Recipe').button('refresh');
+		$('#submitForm').val('Update').button('refresh');
 		$('#deleteItem').on('click', function(event, ui) {
 			deleteListItem(deleteItemKey);
 		});
@@ -555,10 +564,9 @@ window.addEventListener("DOMContentLoaded", function (){
 	buildSelect('chooseDifficulty', 'Difficulty', difficultyArray);
 
 	$('#viewListPage').on('pagebeforeshow',function(event){
-		//Prefetch addItempage so elements exist in dom
-		$.mobile.loadPage("#addItemPage", { showLoadMsg: false } );	
 		//Populate Data List
 		buildDataList();
+		$('.recipeLink').bind('click', setItemKey);			
 	});
 	
 	$('#addItemPage').on('pagebeforeshow',function(event){
@@ -579,6 +587,11 @@ window.addEventListener("DOMContentLoaded", function (){
 		//Attempt a redrawing page. Not sure this is necessary but keeping it in for failsafe.
 		$(this).trigger('create');			
 	});
+
+	$('#viewItemPage').on('pagebeforeshow',function(event){
+		alert("boom");
+		buildItemPage();		
+	});	
 
 	//Specify JQM Global Defaults
 	$(document).bind("mobileinit", function() {
