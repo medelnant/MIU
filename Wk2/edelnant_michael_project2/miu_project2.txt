@@ -1,6 +1,7 @@
 Github Links:
-https://github.com/medelnant/MIU/tree/master/WK1/edelnant_michael_project1
+https://github.com/medelnant/MIU/tree/master/Wk2/edelnant_michael_project2
 
 Gh-Pages Link:
-http://medelnant.github.com/MIU/WK1/edelnant_michael_project1
+http://medelnant.github.com/MIU/Wk2/edelnant_michael_project2/Gold/
+http://medelnant.github.com/MIU/Wk2/edelnant_michael_project2/Bronze/
 
