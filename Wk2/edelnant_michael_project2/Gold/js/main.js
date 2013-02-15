@@ -17,7 +17,6 @@ window.addEventListener("DOMContentLoaded", function (){
 
 	//Build Difficulty Select
 	function buildSelect(argLocation,argLabel,argArray) {
-		
 		//Build Label
 		var difficultyLabel = document.createElement('label');
 		difficultyLabel.innerHTML = argLabel + ":&nbsp;<em>*</em>";
@@ -231,8 +230,6 @@ window.addEventListener("DOMContentLoaded", function (){
 			listThumbNail.setAttribute('src', 'img/' + itemCategory + '.png');
 			listThumbNail.setAttribute('class', 'ul-li-icon');
 
-			console.log(storageObject.rTitle[1]);
-
 			//Write Values
 			listItemTitleAnchor.setAttribute('href', '#viewItemPage');
 			listItemTitleAnchor.setAttribute('data-transition', 'slide');
@@ -265,13 +262,16 @@ window.addEventListener("DOMContentLoaded", function (){
 		recipeContainer.empty();
 		
 		//Create Page Elements
-		pageTitle 				= document.createElement('h2');
-		pageDescription			= document.createElement('p');
-		pageDifficulty			= document.createElement('p');
-		pageCategory			= document.createElement('p');
-		pageDate				= document.createElement('p');
-		pageFlavor				= document.createElement('p');
-		pageDirections			= document.createElement('p');
+		var pageTitle 					= document.createElement('h2');
+		var pageDescription				= document.createElement('p');
+		var pageDifficulty				= document.createElement('p');
+		var pageCategory				= document.createElement('p');
+		var pageDate					= document.createElement('p');
+		var pageFlavor					= document.createElement('p');
+		var pageDirections				= document.createElement('p');
+		var pageIngWrapper				= document.createElement('div')
+		var pageIngList			= document.createElement('ul');
+
 
 		//Write values to specific elements
 		pageTitle.innerHTML 			= recipe.rTitle[1];
@@ -281,6 +281,16 @@ window.addEventListener("DOMContentLoaded", function (){
 		pageDate.innerHTML				= "<strong>Date:</strong> " + recipe.rDate[1];
 		pageFlavor.innerHTML			= "<strong>Flavor:</strong> " + recipe.rFlavor[1];
 		pageDirections.innerHTML		= "<strong>Directions:</strong><br />" + recipe.rDirections[1];
+		pageIngWrapper.innerHTML 		= "<strong>Ingredients</strong><br />";
+
+		//Build List
+		var ingArray = recipe.rIngredients[1].toString().split(',')
+		for(i=0; i<ingArray.length; i++) {
+			var pageIngListItem		= document.createElement('li');
+			pageIngListItem.innerHTML	= ingArray[i];
+			pageIngList.appendChild(pageIngListItem);
+		};
+		pageIngWrapper.appendChild(pageIngList);
 
 		//Put Page Together
 		recipeContainer.append(pageTitle);
@@ -289,8 +299,10 @@ window.addEventListener("DOMContentLoaded", function (){
 		recipeContainer.append(pageCategory);
 		recipeContainer.append(pageFlavor);				
 		recipeContainer.append(pageDifficulty);
+		recipeContainer.append(pageIngWrapper);		
 		recipeContainer.append(pageDirections);
 
+		//Reset Global Item Key
 		editItemKey = '';
 	};
 	
@@ -335,18 +347,13 @@ window.addEventListener("DOMContentLoaded", function (){
 
 	//Clear Global itemKey
 	function clearItemKey() {
-		alert("clearBeingCalled");
 		editItemKey = '';
-		//alert("Edit Item Key = " + editItemKey);
 	};			
 
 	function editListItem() {			
-		//alert("editListItem Function Entry");
 		//Get data from localstorage
 		var value = localStorage.getItem(editItemKey);
-		//alert("Value Local Storage = " + value);
 		var recipeItem = JSON.parse(value);
-		//alert("RecipeItem JSON Parse = " +recipeItem);
 		
 		//Convert parse ingredient list back into array
 		var ingredientArray = recipeItem.rIngredients[1].toString().split(',');
@@ -363,7 +370,6 @@ window.addEventListener("DOMContentLoaded", function (){
 		$("#flavorRange").val(recipeItem.rFlavor[1]).slider("refresh");
 		$("#directions").val(recipeItem.rDirections[1]).trigger("create");
 	
-		//alert(recipeItem.rCategory[1]);
 		setRadioValue('recipeCat',recipeItem.rCategory[1]);
 
 		$('#submitForm').val('Update').button('refresh');
@@ -376,7 +382,6 @@ window.addEventListener("DOMContentLoaded", function (){
 	
 
 	function deleteListItem(itemKey){
-		alert(itemKey);
 		var verify = confirm('Are you sure you want to delete this recipe?')
 		if(verify) {
 			localStorage.removeItem(itemKey);
@@ -393,7 +398,6 @@ window.addEventListener("DOMContentLoaded", function (){
 		//Start out by removing any pre-existing error classes / reset
 		//This is mainly for re-validation		
 		reqElements.removeClass('error');
-		//alert(reqElements);
 		var ingredientContainer = $('#gIngredientContainer');
 		//Reset Error
 
@@ -449,7 +453,6 @@ window.addEventListener("DOMContentLoaded", function (){
 		
 		//Check for no ingredients
 		if(ingredientContainer.is(':empty')) {
-			alert("help");
 			var ingErrorLi = document.createElement('div');
 			ingErrorLi.className = 'activeError';
 			ingErrorLi.innerHTML = 'Please provide atleast one ingredient';
@@ -589,7 +592,6 @@ window.addEventListener("DOMContentLoaded", function (){
 	});
 
 	$('#viewItemPage').on('pagebeforeshow',function(event){
-		alert("boom");
 		buildItemPage();		
 	});	
 

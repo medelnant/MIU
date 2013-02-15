@@ -202,6 +202,8 @@ window.addEventListener("DOMContentLoaded", function (){
 		    		ge('displayData').removeEventListener('click', buildDataList)},10);	// Remove function binding
 		    		btnListener = false;
 
+		    	hookListInlay();
+
 		    	//resetForm
 		    	resetForm();	
 		    	break;
@@ -314,6 +316,7 @@ window.addEventListener("DOMContentLoaded", function (){
 
 					subListItemTitle.innerHTML = storageObject[key][0] + "&nbsp;";
 					subListItem.appendChild(subListItemTitle);
+					subListItem.setAttribute('class', 'collapsible')
 					subListItem.appendChild(orderedListIng);
 					//Add subListItem to subList
 					listSubList.appendChild(subListItem);
@@ -608,6 +611,13 @@ window.addEventListener("DOMContentLoaded", function (){
 
 	//Create Select Element Dropdown.
 	buildSelect('chooseDifficulty', 'Difficulty', difficultyArray);
+
+	//Bind List Inlay Functionality to existing dataList
+	function hookListInlay() {
+		$('.collapsible').click(function(){
+			$(this).find("ol").toggle();
+		});
+	};
 	
 });
 

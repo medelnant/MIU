@@ -5,7 +5,7 @@ Author:     Michael Edelnant
 Project:    Project 1
 Course:     MIU
 Instructor: Robin Alarcon
-File Name:  index.html
+File Name:  fourZeroFour.html
 #################################################-->
     <head>
         <meta charset="utf-8" />
@@ -15,7 +15,7 @@ File Name:  index.html
         <meta name="viewport" content="user-scalable=no, width=device-width" />
         <meta name="HandheldFriendly" content="true" />
         <meta name="MobileOptimized" content="320" />
-        <title>Michael Edelnant | Project 1| Mobile Interfaces and Usability | Full Sail University</title>
+         <title>Michael Edelnant | Project 1 | Mobile Interfaces and Usability | Full Sail University</title>
 
         <!-- Include Stylesheet -->
         <link rel="stylesheet" href="css/1.2.0.css">
@@ -32,43 +32,36 @@ File Name:  index.html
             </h1>
         </header>
         <section id="searchBar">
-            <form action="fourZeroFour.html">
+            <form action="#">
                 <div>
                     <input id="search" type="text" placeholder="Search Here" />
                     <input id="submit" type="submit" value="Search" />
                 </div>
             </form>
         </section>
-        <section id="mainContent" class="gHome">
-            <p>
-                <strong>Welcome,</strong> <br />
-                This is a simple application for storing some of your favorite holiday recipes.<br /><br />
-                <a href="addItem.html" class="gBtn gFullWidth">
-                    Add a Recipe Now!
-                </a>                 
-            </p>
-        </section>
-        <section class="listView listGrid">
-            <h3>Browse Categories</h3>
-            <ul>
-                <li><a href="fourZeroFour.html" class="browseLink" data-category="snack"><img src="img/Snack.png" />Snack</a></li>
-                <li><a href="fourZeroFour.html" class="browseLink" data-category="appetizer"><img src="img/Appetizer.png" />Appetizer</a></li>
-                <li><a href="fourZeroFour.html" class="browseLink" data-category="entree"><img src="img/Entree.png" />Entree</a></li>
-                <li><a href="fourZeroFour.html" class="browseLink" data-category="dessert"><img src="img/Dessert.png" />Dessert</a></li>
-                <li><a href="fourZeroFour.html" class="browseLink" data-category="other"><img src="img/Other.png" />Other</a></li>
-            </ul>
+        <section id="mainContent" class="noBG">
+                <h2>About</h2>
+                <section class="listView">
+                    <ul class="noThumb">
+                        <li><a href="../Gold/index.html">Gold App</a></li>
+                        <li><a href="index.html">Bronze App</a></li>
+                        <li><a href="https://github.com/medelnant/MIU/tree/master/Wk2/edelnant_michael_project2">Github</a></li>
+                        <li><a href="http://www.visualaesthetic.com">VisualAesthetic.com</a></li>
+                    </ul>
+                </section><br />
+                <h2>Credits</h2>
+                <p>No Credits at this time.</p>            
         </section>
         <footer>
-            <ul>
             <ul>
                 <li><a href="about.html">About</a></li>
                 <li><a href="addItem.html">Add Recipe</a></li>
                 <li><a href="fourZeroFour.html">News Stream</a></li>
             </ul>
-            </ul>
-        </footer>
+        </footer>        
 
         <!-- Include javascript -->
         <script src="js/recipeJSON.js"></script>
+        <script src="js/main.js"></script>
     </body>
 </html>
