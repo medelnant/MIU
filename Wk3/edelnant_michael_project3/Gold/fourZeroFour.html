@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!-- ##############################################
+Term:       1302
+Author:     Michael Edelnant
+Project:    Project 2
+Course:     MIU
+Instructor: Robin Alarcon
+File Name:  fourZeroFour.html
+#################################################-->
+    <head>
+        <meta charset="utf-8" />
+        <meta name="keywords" content="Holidays, Recipes, Thanksgiving, Christmas, New Years, Food, Appetizer, Entree, Dessert" />
+        <meta name="description" content="A simple recipe application for the holidays." />
+        <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="user-scalable=no, width=device-width" />
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="MobileOptimized" content="320" />
+         <title>Michael Edelnant | Project 1 | Mobile Interfaces and Usability | Full Sail University</title>
+
+        <!-- Include Stylesheet -->
+        <link rel="stylesheet" href="css/1.2.0.css">
+        <link rel="stylesheet" href="css/styles.css">
+
+        <!-- Include Dependency Scripts -->
+        <!-- <script src="js/jquery-1.9.1.min.js"></script> -->
+        <!-- <script src="js/jquery.mobile-1.2.0.min.js"></script> -->
+    </head>
+    <body>
+        <header>
+            <h1>
+                <a href="index.html">Holiday Recipes</a>
+            </h1>
+        </header>
+        <section id="searchBar">
+            <form action="#">
+                <div>
+                    <input id="search" type="text" placeholder="Search Here" />
+                    <input id="submit" type="submit" value="Search" />
+                </div>
+            </form>
+        </section>
+        <section id="mainContent" class="gHome">
+            <p>
+                <strong>Oops!</strong> <br />
+                We are really sorry but the page you requested cannot be found.
+
+            </p>
+        </section>
+        <section class="listView">
+            <h3>Browse Categories</h3>
+            <ul>
+                <li><a href="fourZeroFour.html" class="browseLink" data-category="snack"><img src="img/Snack.png" />Snack</a></li>
+                <li><a href="fourZeroFour.html" class="browseLink" data-category="appetizer"><img src="img/Appetizer.png" />Appetizer</a></li>
+                <li><a href="fourZeroFour.html" class="browseLink" data-category="entree"><img src="img/Entree.png" />Entree</a></li>
+                <li><a href="fourZeroFour.html" class="browseLink" data-category="dessert"><img src="img/Dessert.png" />Dessert</a></li>
+                <li><a href="fourZeroFour.html" class="browseLink" data-category="other"><img src="img/Other.png" />Other</a></li>
+            </ul>
+        </section>
+
+        <!-- Include javascript -->
+        <script src="js/recipeJSON.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
