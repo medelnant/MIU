@@ -16,13 +16,15 @@ File Name:  index.html
         <title>Michael Edelnant | Project 1 | Mobile Interfaces and Usability | Full Sail University</title>
 
         <!-- Include Stylesheet -->
-        <link rel="stylesheet" href="css/jquery.mobile-1.2.0.css">
+        <link rel="stylesheet" href="css/jqm/jquery.mobile-1.2.0.css">
         <link rel="stylesheet" href="css/styles.css">
 
         <!-- Include Dependency Scripts -->
-        <script src="js/jquery-1.9.1.min.js"></script>
-        <script src="js/jquery-migrate-1.1.0.js"></script>
-        <script src="js/jquery.mobile-1.2.0.min.js"></script>
+        <script src="js/lib/jquery-1.9.1.min.js"></script>
+        <script src="js/lib/jquery-migrate-1.1.0.js"></script>
+        <script src="js/lib/jquery.mobile-1.2.0.min.js"></script>
+ 
+               
         <!-- Include javascript -->
         <script src="js/recipeJSON.js"></script>
         <script src="js/main.js"></script>        
@@ -40,44 +42,49 @@ File Name:  index.html
             </header>
             <section data-role="content">               
                     <div id="feature">
-                        <h2>Welcome,</h2>
-                        <p>
-                            This is a simple application for storing some of your favorite holiday recipes.
-                        </p>
-                        <a href="#addItemPage" data-role="button" data-transition="slide">Add a Recipe Now!</a>
+                        <div class="carousel">
+                            <a href="#addItemPage" data-transition="slide">
+                                <div id="item1">
+                                    <div class="scrim">
+                                        <p>Welcome to your Holiday Recipes App, click here to add a recipe.</p>
+                                    </div>
+                                    <!-- carousel item content here -->
+                                </div>
+                            </a>
+                        </div>
                     </div>
                     <br />
                 <ul data-role="listview" data-filter="true" data-inset="true">
                     <li>
-                        <a href="#fourZeroFour" data-transition="slide">
+                        <a href="#viewListPage" class="browseCat" data-transition="slide" data-category="Snack">
                             <img src="img/Snack.png" />
                             <h3>Snack</h3>
                             <p>Find that perfect snack for a mid day refuel.</p>
                         </a>
                     </li>
                     <li>
-                        <a href="#fourZeroFour" data-transition="slide">
+                        <a href="#viewListPage" class="browseCat" data-transition="slide" data-category="Appetizer">
                             <img src="img/Appetizer.png" />
                             <h3>Appetizer</h3>
                             <p>Who doesn't love appetizers? Not this dev!</p>
                         </a>
                     </li>
                     <li>
-                        <a href="#fourZeroFour" data-transition="slide">
+                        <a href="#viewListPage" class="browseCat" data-transition="slide" data-category="Entree">
                             <img src="img/Entree.png" />
                             <h3>Entree</h3>
                             <p>Browse the most frequented category of this app.</p>
                         </a>
                     </li>
                     <li>
-                        <a href="#fourZeroFour" data-transition="slide">
+                        <a href="#viewListPage" class="browseCat" data-transition="slide" data-category="Dessert">
                             <img src="img/Dessert.png" />
                             <h3>Dessert</h3>
                             <p>The most favorited category aside from entrees.</p>
                         </a>
                     </li>
                     <li>
-                        <a href="#fourZeroFour" data-transition="slide">
+                        <a href="#viewListPage" class="browseCat" data-transition="slide" data-category="Other">
                             <img src="img/Other.png" />
                             <h3>Other</h3>
                             <p>We care about the recipes that don't fit in.</p>
@@ -129,7 +136,7 @@ File Name:  index.html
                         <div data-role="fieldcontain" id="subList">
                             <label>Category:</label>
                             <div data-role="controlgroup">
-                                <input type="radio" name="recipeCat" id="cat_snack" value="Snack"/>                                    
+                                <input type="radio" name="recipeCat" id="cat_snack" value="Snack" checked/>                                    
                                 <label for="cat_snack">&nbsp;Snack</label>
                                 <input type="radio" name="recipeCat" id="cat_appetizer" value="Appetizer"/>
                                 <label for="cat_appetizer">&nbsp;Appetizer</label>
@@ -143,11 +150,11 @@ File Name:  index.html
                         </div>
                         <div data-role="fieldcontain">
                             <label for="chooseDate">Choose Date :</label>
-                            <input type="date" name="chooseDate" id="chooseDate" />
+                            <input type="date" name="chooseDate" id="chooseDate" placeholder="YYYY-MM-DD" />
                         </div>
                         <div data-role="fieldcontain">
                             <label for="flavorRange">Flavor Range :</label>
-                            <input type="range" value="0" max="100" min="0" id="flavorRange" />
+                            <input type="range" value="50" max="100" min="0" id="flavorRange" />
                         </div>
                         <div data-role="fieldcontain">
                             <label>Ingredients*</label>
@@ -158,14 +165,14 @@ File Name:  index.html
                         </div>                     
                         <div data-role="fieldcontain">
                             <label for="directions">Instructions :&nbsp;<em>*</em></label>
-                            <textarea name="directions" id="directions" class="gRequired"></textarea>
+                            <textarea name="directions" id="directions" class="gRequired" placeholder="Place your detailed instructions here."></textarea>
                         </div>                        
                    </fieldset>
                     <fieldset class="ui-grid-a">
                         <div class="ui-block-a"><input type="button"  data-role="button" value="Save" id="submitForm"/></div>
                         <div class="ui-block-b"><input type="button"  data-role="button" value="Delete" id="deleteItem"/></div>
                     </fieldset>
-                    <a href="#viewListPage" data-role="button" data-transition="slide">View Recipe List</a>
+                    <a href="#viewListPage" data-transition="slide">View Recipe List</a>
                 </form>                                               
             </section> 
             <footer data-role="footer" data-id="appFooter">
@@ -212,7 +219,7 @@ File Name:  index.html
                 <h1>Holiday Recipes</h1>                        
             </header>
             <section data-role="content" id="mainContent">
-                <h2>View Recipes</h2>
+                <h2 id="dynamicTitle"></h2>
                 <ul id="dataList" data-role="listview" data-filter="true" data-inset="true" data-split-icon="gear">
 
                 </ul>
@@ -228,6 +235,32 @@ File Name:  index.html
                 </div><!-- /navbar -->     
             </footer><!-- /footer -->               
         </div><!-- /viewListPage -->
+
+        <!-- ###################################
+        View Category List Page
+        #####################################-->
+        <div data-role="page" id="viewCatListPage">
+            <header data-role="header" data-id="appHeader">
+                <a href="#indexPage" data-role="button" data-transition="slide" data-direction="reverse" data-icon="home" data-iconpos="notext">Home</a>
+                <h1>Holiday Recipes</h1>                        
+            </header>
+            <section data-role="content" id="mainContent">
+                <h2>View Recipes</h2>
+                <ul id="dataList" data-role="listview" data-filter="true" data-inset="true" data-split-icon="gear">
+
+                </ul>
+                <a href="#indexPage" data-role="button" id="clearDataLink">Clear Data</a><br />            
+            </section>
+            <footer data-role="footer" data-id="appFooter">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#aboutPage" data-iconpos="top" data-icon="info" id="addItemLink" data-transition="slide">About</a></li>
+                        <li><a href="#addItemPage" data-iconpos="top" data-icon="plus" data-transition="slide" data-direction="reverse">Add Recipe</a></li>
+                        <li><a href="#newsStreamPage" data-iconpos="top" data-icon="star" data-transition="slide">News Stream</a></li>
+                    </ul>
+                </div><!-- /navbar -->     
+            </footer><!-- /footer -->               
+        </div><!-- /viewListPage -->        
 
 
         <!-- ###################################

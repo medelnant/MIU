@@ -41,11 +41,12 @@
 #subList.error {background: rgba(255,255,255,.45);}
 .activeError {border: 1px solid #CF2219 !important; background: rgba(255,255,255,.45); padding: .5em; font-size: 1em; color: #CF2219; border-radius: .5em;}
 
+h2 {font-size: 20px;margin: 0 0 20px 0;}
 h5 {margin: 0;padding: 0;}
 
 #feature {
-	border: 1px solid #ccc;
-	padding: 1em;
+	position: relative;
+	border: 5px solid #000;
 	line-height: 15px;
 	font-size: 13px;
 	background: #ffffff; /* Old browsers */
@@ -58,3 +59,20 @@ h5 {margin: 0;padding: 0;}
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
 
 }
+
+.carousel {border:2px solid #fff; position: relative;}
+.carousel div {height: 125px;}
+.carousel div#item1 {background: url(../img/stock/dessertFeature.jpg) 0 0 no-repeat;
+background-size: cover;
+}
+.carousel div#item2 {background: url(../img/stock/entreeFeature.jpg) 0 0 no-repeat;
+background-size: cover;
+}
+.carousel nav {position: absolute; z-index: 50; bottom: 0; left: 0; background: rgba(0,0,0,.5); height: 50px; width: 100%;}
+.carousel nav a,
+.carousel nav ol {display: inline-block;}
+.carousel nav .prev {position: absolute; width: 50px; height: 50px; background: #fff; left: 0; top: -65px; z-index: 51;}
+.carousel nav .next {position: absolute; width: 50px; height: 50px; background: #fff; right: 0; top: -65px; z-index: 51;}
+
+.carousel .scrim {width: 100%; position: absolute; bottom: 0; background: rgba(0,0,0,.75); height: 50px; border-top: 5px solid #000;}
+.carousel a .scrim p {color: #fff; text-shadow: 0 2px 2px black; padding: .5em; margin: 0; font-weight: normal !important;}
