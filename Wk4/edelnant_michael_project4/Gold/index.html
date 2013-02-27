@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<!-- ##############################################
+Term:       1302
+Author:     Michael Edelnant
+Project:    Project 2
+Course:     MIU
+Instructor: Robin Alarcon
+File Name:  index.html
+#################################################-->
+    <head>
+        <meta charset="utf-8" />
+        <meta name="keywords" content="Holidays, Recipes, Thanksgiving, Christmas, New Years, Food, Appetizer, Entree, Dessert" />
+        <meta name="description" content="A simple recipe application for the holidays." />
+        <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Michael Edelnant | Project 1 | Mobile Interfaces and Usability | Full Sail University</title>
+
+        <!-- Include Stylesheet -->
+        <link rel="stylesheet" href="css/jqm/jquery.mobile-1.2.0.css">
+        <link rel="stylesheet" href="css/styles.css">
+
+        <!-- Include Dependency Scripts -->
+        <script src="js/lib/jquery-1.9.1.min.js"></script>
+        <script src="js/lib/jquery-migrate-1.1.0.js"></script>
+        <script src="js/lib/jquery.mobile-1.2.0.min.js"></script>
+ 
+               
+        <!-- Include javascript -->
+        <script src="js/recipeJSON.js"></script>
+        <script src="js/main.js"></script>        
+    </head>
+    <body>
+        <!-- ###################################
+        Index Page
+        #####################################-->
+        <div data-role="page" data-theme="c" id="indexPage">
+            <header data-role="header" data-id="appHeader">
+                <h1>Holiday Recipes</h1>
+                <a href="#viewListPage" data-role="button" data-icon="grid" data-transition="slide" class="ui-btn-right" data-iconpos="notext">Views Recipes</a>                        
+            </header>
+                <div id="feature">
+                    <div class="carousel">
+                        <a href="#addItemPage" data-transition="slide">
+                            <div id="item1">
+                                <div class="scrim">
+                                    <p>Welcome to your Holiday Recipes App, click here to add a recipe.</p>
+                                </div>
+                                <!-- carousel item content here -->
+                            </div>
+                        </a>
+                    </div>
+                </div>            
+            <section data-role="content">               
+                <br />
+                <ul data-role="listview" data-filter="true" data-inset="true">
+                    <li>
+                        <a href="#viewListPage" class="browseCat" data-transition="slide" data-category="Snack">
+                            <img src="img/Snack.png" />
+                            <h3>Snack</h3>
+                            <p>Find that perfect snack for a mid day refuel.</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#viewListPage" class="browseCat" data-transition="slide" data-category="Appetizer">
+                            <img src="img/Appetizer.png" />
+                            <h3>Appetizer</h3>
+                            <p>Who doesn't love appetizers? Not this dev!</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#viewListPage" class="browseCat" data-transition="slide" data-category="Entree">
+                            <img src="img/Entree.png" />
+                            <h3>Entree</h3>
+                            <p>Browse the most frequented category of this app.</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#viewListPage" class="browseCat" data-transition="slide" data-category="Dessert">
+                            <img src="img/Dessert.png" />
+                            <h3>Dessert</h3>
+                            <p>The most favorited category aside from entrees.</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#viewListPage" class="browseCat" data-transition="slide" data-category="Other">
+                            <img src="img/Other.png" />
+                            <h3>Other</h3>
+                            <p>We care about the recipes that don't fit in.</p>
+                        </a>
+                    </li>
+                </ul>                
+            </section>
+            <footer data-role="footer" data-id="appFooter">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#aboutPage" data-iconpos="top" data-icon="info" id="addItemLink" data-transition="slide">About</a></li>
+                        <li><a href="#addItemPage" data-iconpos="top" data-icon="plus" data-transition="slide">Add Recipe</a></li>
+                        <li><a href="#newsStreamPage" data-iconpos="top" data-icon="star" data-transition="slide">News Stream</a></li>
+                    </ul>
+                </div><!-- /navbar -->     
+            </footer><!-- /footer -->               
+        </div> <!-- /indexPage -->
+
+
+        <!-- ###################################
+        Add Item Page
+        #####################################-->
+        <div data-role="page" data-theme="c" id="addItemPage">
+            <header data-role="header" data-id="appHeader">
+                <a href="#indexPage" data-role="button" data-transition="slide" data-direction="reverse" data-icon="home" data-iconpos="notext">Home</a>
+                <h1>Holiday Recipes</h1>
+                <a href="#viewListPage" data-role="button" data-icon="grid" data-transition="slide" class="ui-btn-right" data-iconpos="notext">Views Recipes</a>              
+            </header>
+            <section data-role="content">
+                <h2>Add Recipe</h2>
+                <h5>Enter your recipe information and save.</h5>
+                <form action="#" method="post" id="addRecipeForm" name="addRecipeForm">
+                   <fieldset>
+                        <ul id="errorBox">
+                        </ul>
+                        <div data-role="fieldcontain">
+                            <label for="recipeTitle">Recipe Title :&nbsp;<em>*</em></label>
+                            <input type="text" id="recipeTitle" class="gRequired" placeholder="Title of your recipe" />
+                        </div>
+                        <div data-role="fieldcontain">
+                            <label for="recipeSummary">Small Description :&nbsp;<em>*</em></label>
+                            <input type="text" id="recipeSummary" class="gRequired" placeholder="Quick description" />
+                        </div>
+                        <div data-role="fieldcontain" id="chooseDifficulty">
+                            <!-- ################################
+                            Dynamically add Select Dropdown 
+                            ################################# -->
+                        </div>
+                        <div data-role="fieldcontain" id="subList">
+                            <label>Category:</label>
+                            <div data-role="controlgroup">
+                                <input type="radio" name="recipeCat" id="cat_snack" value="Snack" checked/>                                    
+                                <label for="cat_snack">&nbsp;Snack</label>
+                                <input type="radio" name="recipeCat" id="cat_appetizer" value="Appetizer"/>
+                                <label for="cat_appetizer">&nbsp;Appetizer</label>
+                                <input type="radio" name="recipeCat" id="cat_entree" value="Entree"/>                                     
+                                <label for="cat_entree">&nbsp;Entree</label>                                   
+                                <input type="radio" name="recipeCat" id="cat_dessert" value="Dessert"/>
+                                <label for="cat_dessert">&nbsp;Dessert</label>                                    
+                                <input type="radio" name="recipeCat" id="cat_other" value="Other"/> 
+                                <label for="cat_other">&nbsp;Other</label>
+                            </div>
+                        </div>
+                        <div data-role="fieldcontain">
+                            <label for="chooseDate">Choose Date :</label>
+                            <input type="date" name="chooseDate" id="chooseDate" placeholder="YYYY-MM-DD" />
+                        </div>
+                        <div data-role="fieldcontain" class="noRound">
+                            <label for="flavorRange">Flavor Range :</label>
+                            <input type="range" value="50" max="100" min="0" id="flavorRange" />
+                        </div>
+                        <div data-role="fieldcontain">
+                            <label>Ingredients*</label>
+                            <div>
+                                <ul data-role="listview" data-inset="true" data-split-icon="delete" id="gIngredientContainer"></ul>
+                            </div>
+                             <a href="#" id="gAddIngredient" data-role="button" class="gBtn">Add Ingredient</a>
+                        </div>                     
+                        <div data-role="fieldcontain" class="noRound">
+                            <label for="directions">Instructions :&nbsp;<em>*</em></label>
+                            <textarea name="directions" id="directions" class="gRequired" placeholder="Place your detailed instructions here."></textarea>
+                        </div>                        
+                   </fieldset>
+                    <fieldset class="ui-grid-a">
+                        <div class="ui-block-a"><input type="button"  data-role="button" value="Save" id="submitForm"/></div>
+                        <div class="ui-block-b"><input type="button"  data-role="button" value="Delete" id="deleteItem"/></div>
+                    </fieldset>
+                    <a href="#viewListPage" data-transition="slide">View Recipe List</a>
+                </form>                                               
+            </section> 
+            <footer data-role="footer" data-id="appFooter">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#aboutPage" data-iconpos="top" data-icon="info" id="addItemLink" data-transition="slide">About</a></li>
+                        <li><a href="#addItemPage" data-iconpos="top" data-icon="plus" data-transition="slide" class="ui-btn-active ui-state-persist">Add Recipe</a></li>
+                        <li><a href="#newsStreamPage" data-iconpos="top" data-icon="star" data-transition="slide">News Stream</a></li>
+                    </ul>
+                </div><!-- /navbar -->     
+            </footer><!-- /footer -->                  
+        </div><!-- /addItemPage -->
+
+        <!-- ###################################
+        viewItem Page
+        #####################################-->
+        <div data-role="page" data-theme="c" id="viewItemPage">
+            <header data-role="header" data-id="appHeader">
+                <a href="#indexPage" data-role="button" data-transition="slide" data-direction="reverse" data-icon="home" data-iconpos="notext">Home</a>
+                <h1>Holiday Recipes</h1>
+                <a href="#viewListPage" data-role="button" data-icon="grid" data-transition="slide" class="ui-btn-right" data-iconpos="notext">Views Recipes</a>                         
+            </header>
+            <section data-role="content" id="viewItemContent">
+       
+            </section>
+            <footer data-role="footer" data-id="appFooter">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#aboutPage" data-iconpos="top" data-icon="info" id="addItemLink" data-transition="slide" class="ui-btn-active ui-state-persist">About</a></li>
+                        <li><a href="#addItemPage" data-iconpos="top" data-icon="plus" data-transition="slide">Add Recipe</a></li>
+                        <li><a href="#newsStreamPage" data-iconpos="top" data-icon="star" data-transition="slide">News Stream</a></li>
+                    </ul>
+                </div><!-- /navbar -->     
+            </footer><!-- /footer -->                    
+        </div><!-- /viewItemPage -->         
+
+
+        <!-- ###################################
+        View List Page
+        #####################################-->
+        <div data-role="page" data-theme="c" id="viewListPage">
+            <header data-role="header" data-id="appHeader">
+                <a href="#indexPage" data-role="button" data-transition="slide" data-direction="reverse" data-icon="home" data-iconpos="notext">Home</a>
+                <h1>Holiday Recipes</h1>                        
+            </header>
+            <section data-role="content" id="mainContent">
+                <h2 id="dynamicTitle"></h2>
+                <ul id="dataList" data-role="listview" data-filter="true" data-inset="true" data-split-icon="gear">
+
+                </ul>
+                <a href="#indexPage" data-role="button" id="clearDataLink">Clear Data</a><br />            
+            </section>
+            <footer data-role="footer" data-id="appFooter">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#aboutPage" data-iconpos="top" data-icon="info" id="addItemLink" data-transition="slide">About</a></li>
+                        <li><a href="#addItemPage" data-iconpos="top" data-icon="plus" data-transition="slide" data-direction="reverse">Add Recipe</a></li>
+                        <li><a href="#newsStreamPage" data-iconpos="top" data-icon="star" data-transition="slide">News Stream</a></li>
+                    </ul>
+                </div><!-- /navbar -->     
+            </footer><!-- /footer -->               
+        </div><!-- /viewListPage -->
+
+        <!-- ###################################
+        View Category List Page
+        #####################################-->
+        <div data-role="page" data-theme="c" id="viewCatListPage">
+            <header data-role="header" data-id="appHeader">
+                <a href="#indexPage" data-role="button" data-transition="slide" data-direction="reverse" data-icon="home" data-iconpos="notext">Home</a>
+                <h1>Holiday Recipes</h1>                        
+            </header>
+            <section data-role="content" id="mainContent">
+                <h2>View Recipes</h2>
+                <ul id="dataList" data-role="listview" data-filter="true" data-inset="true" data-split-icon="gear">
+
+                </ul>
+                <a href="#indexPage" data-role="button" id="clearDataLink">Clear Data</a><br />            
+            </section>
+            <footer data-role="footer" data-id="appFooter">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#aboutPage" data-iconpos="top" data-icon="info" id="addItemLink" data-transition="slide">About</a></li>
+                        <li><a href="#addItemPage" data-iconpos="top" data-icon="plus" data-transition="slide" data-direction="reverse">Add Recipe</a></li>
+                        <li><a href="#newsStreamPage" data-iconpos="top" data-icon="star" data-transition="slide">News Stream</a></li>
+                    </ul>
+                </div><!-- /navbar -->     
+            </footer><!-- /footer -->               
+        </div><!-- /viewCategoryPage -->        
+
+
+        <!-- ###################################
+        News Stream Page
+        #####################################-->
+        <div data-role="page" data-theme="c" id="newsStreamPage">
+            <header data-role="header" data-id="appHeader">
+                <a href="#indexPage" data-role="button" data-transition="slide" data-direction="reverse" data-icon="home" data-iconpos="notext">Home</a>
+                <h1>Holiday Recipes</h1>
+                <a href="#viewListPage" data-role="button" data-icon="grid" data-transition="slide" class="ui-btn-right" data-iconpos="notext">Views Recipes</a>                         
+            </header>
+            <section data-role="content" id="mainContent">
+                <h2>News Stream</h2>
+                <h5>Here is a list of the our most frequent users.</h5>
+                <ul data-role="listview" data-inset="true">
+                    <li data-role="list-divider">February 14, 2013<span class="ui-li-count">6</span></li>
+                    <li>
+                        <h3>Yusra Ahmed</h3>
+                        <p><strong>Likes: Baked Fudge Cake</strong></p>
+                        <p class="ui-li-aside">
+                            <strong>Feb, 14, 2013</strong><br />
+                            <strong>8:00</strong>PM
+                        </p>
+                    </li>
+                    <li>
+                        <h3>Daniel Beacham</h3>
+                        <p><strong>Likes: Guacamole</strong></p>
+                        <p class="ui-li-aside">
+                            <strong>Feb, 14, 2013</strong><br />
+                            <strong>7:00</strong>PM
+                        </p>
+                    </li>
+                    <li>
+                        <h3>Houston Bennett</h3>
+                        <p><strong>Likes: 5 Hour Beef Stew</strong></p>
+                        <p class="ui-li-aside">
+                            <strong>Feb, 14, 2013</strong><br />
+                            <strong>6:00</strong>PM
+                        </p>
+                    </li>
+                    <li>
+                        <h3>John Brandenburg</h3>
+                        <p><strong>Likes: 2 Minute Cheese Quesadillas</strong></p>
+                        <p class="ui-li-aside">
+                            <strong>Feb, 14, 2013</strong><br />
+                            <strong>5:00</strong>PM
+                        </p>
+                    </li>
+                    <li>
+                        <h3>Daniel Campo</h3>
+                        <p><strong>Likes: A Jerky Chicken</strong></p>
+                        <p class="ui-li-aside">
+                            <strong>Feb, 14, 2013</strong><br />
+                            <strong>4:00</strong>PM
+                        </p>
+                    </li>
+                    <li>
+                        <h3>Brad Cedergren</h3>
+                        <p><strong>Likes: Sage Pork Chops</strong></p>
+                        <p class="ui-li-aside">
+                            <strong>Feb, 14, 2013</strong><br />
+                            <strong>3:00</strong>PM
+                        </p>
+                    </li>
+                    <li data-role="list-divider">February 13, 2013<span class="ui-li-count">2</span></li>
+                    <li>
+                        <h3>George Dacosta</h3>
+                        <p><strong>Likes: BBQ Chuck Roast</strong></p>
+                        <p class="ui-li-aside">
+                            <strong>Feb, 13, 2013</strong><br />
+                            <strong>10:00</strong>PM
+                        </p>
+                    </li>
+                    <li>
+                        <h3>Benjamin Forshley</h3>
+                        <p><strong>Likes: Adobo Sirloin</strong></p>
+                        <p class="ui-li-aside">
+                            <strong>Feb, 13, 2013</strong><br />
+                            <strong>10:00</strong>PM
+                        </p>
+                    </li>
+                </ul>        
+            </section>
+            <footer data-role="footer" data-id="appFooter">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#aboutPage" data-iconpos="top" data-icon="info" id="addItemLink" data-transition="slide">About</a></li>
+                        <li><a href="#addItemPage" data-iconpos="top" data-icon="plus" data-transition="slide">Add Recipe</a></li>
+                        <li><a href="#newsStreamPage" data-iconpos="top" data-icon="star" data-transition="slide" class="ui-btn-active ui-state-persist">News Stream</a></li>
+                    </ul>
+                </div><!-- /navbar -->     
+            </footer><!-- /footer -->                    
+        </div><!-- /newsStreamPage --> 
+
+        <!-- ###################################
+        About Page
+        #####################################-->
+        <div data-role="page" data-theme="c" id="aboutPage">
+            <header data-role="header" data-id="appHeader">
+                <a href="#indexPage" data-role="button" data-transition="slide" data-direction="reverse" data-icon="home" data-iconpos="notext">Home</a>
+                <h1>Holiday Recipes</h1>
+                <a href="#viewListPage" data-role="button" data-icon="grid" data-transition="slide" class="ui-btn-right" data-iconpos="notext">Views Recipes</a>                         
+            </header>
+            <section data-role="content" id="mainContent">
+                <h2>About</h2>
+                <div data-role="controlgroup">
+                    <a href="#indexPage" data-role="button" data-transition="slide" data-direction="reverse">Gold App</a>
+                    <a href="../Bronze/index.html" data-role="button" data-ajax="false">Bronze App</a>
+                    <a href="https://github.com/medelnant/MIU/tree/master/Wk2/edelnant_michael_project2" data-role="button" data-ajax="false">Github</a>                    
+                    <a href="http://www.visualaesthetic.com" data-role="button" data-ajax="false">VisualAesthetic.com</a>
+                </div>
+                <h2>Credits</h2> 
+                <p>There are no credits at this time.</p>        
+            </section>
+            <footer data-role="footer" data-id="appFooter">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#aboutPage" data-iconpos="top" data-icon="info" id="addItemLink" data-transition="slide" class="ui-btn-active ui-state-persist">About</a></li>
+                        <li><a href="#addItemPage" data-iconpos="top" data-icon="plus" data-transition="slide">Add Recipe</a></li>
+                        <li><a href="#newsStreamPage" data-iconpos="top" data-icon="star" data-transition="slide">News Stream</a></li>
+                    </ul>
+                </div><!-- /navbar -->     
+            </footer><!-- /footer -->                    
+        </div><!-- /aboutPage --> 
+
+
+        <!-- ###################################
+        404 Page
+        #####################################-->
+        <div data-role="page" data-theme="c" id="fourZeroFour">
+            <header data-role="header" data-id="appHeader">
+                <a href="#indexPage" data-role="button" data-transition="slide" data-direction="reverse" data-icon="home" data-iconpos="notext">Home</a>
+                <h1>Holiday Recipes</h1>
+                <a href="#viewListPage" data-role="button" data-icon="grid" data-transition="slide" class="ui-btn-right" data-iconpos="notext">Views Recipes</a>                         
+            </header>
+            <section data-role="content" id="mainContent">
+                <h2>Oops!</h2>
+                <p>We are really sorry but the page you requested cannot be found.</p>
+                <p>It seems the page you were trying to reach doesn't exist anymore, or maybe it has just moved. Best advice we could give you is to start again from the home page. Thank you very much.</p>          
+            </section>
+            <footer data-role="footer" data-id="appFooter">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#aboutPage" data-iconpos="top" data-icon="info" id="addItemLink" data-transition="slide">About</a></li>
+                        <li><a href="#addItemPage" data-iconpos="top" data-icon="plus" data-transition="slide">Add Recipe</a></li>
+                        <li><a href="#newsStreamPage" data-iconpos="top" data-icon="star" data-transition="slide" class="ui-btn-active ui-state-persist">News Stream</a></li>
+                    </ul>
+                </div><!-- /navbar -->     
+            </footer><!-- /footer -->                    
+        </div><!-- /404Page -->                                 
+    </body>
+</html>

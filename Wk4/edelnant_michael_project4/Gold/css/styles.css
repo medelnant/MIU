@@ -1,0 +1,248 @@
+/* 
+Author: Michael S. Edelnant
+School: Full Sail University
+Course: MIU 1302
+Instructor: Robin Alarcon
+---------------------------------------------------------------------------
+Project 4 | styles.css | Application Theme including JQM Overrides
+--------------------------------------------------------------------------- */
+
+/*Color Swatche Notes
+
+Theme 1 (Base):
+#FF2151 | rgba(255,33,81,1);
+#FF7729 | rgba(255,119,41,1);
+#FFAD29 | rgba(255,173,41,1);
+#FFEBCA | rgba(255,235,202,1);
+#1AB58A | rgba(26,181,138,1);
+
+Theme 2 (Soft Pastels):
+#625D73 | rgba(98,93,115,1);
+#F1F2C2 | rgba(241,242,194,1);
+#D98B84 | rgba(217,139,132,1);
+
+Theme 3 (Jaded Greens)
+#297373 | rgba(41,115,115,1);
+#038C65 | rgba(3,140,101,1);
+#0ABF6A | rgba(10,191,106,1);
+#0DD965 | rgba(13,217,101,1);
+#6BFF75 | rgba(107,255,117,1);
+
+*/
+
+/*#############################################
+Typography
+#############################################*/
+
+	/*-----------------------------------------
+	Google Fonts
+	-----------------------------------------*/
+	@import url(https://fonts.googleapis.com/css?family=Pacifico);
+	@import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+
+	/*-----------------------------------------
+	Headings
+	-----------------------------------------*/
+	h2 {margin: 0 0 0px 0;font-family: 'Pacifico', cursive; font-weight: normal; color: rgba(95,65,29,.85); font-size: 1.7em;}
+	#viewListPage h2 {margin: 0 0 10px 0;}
+	h5 {margin: 0;padding: 0; color: rgba(95,65,29,.85);}
+	#addItemPage h5 {background: rgba(95,65,29,.65);padding: 5px 10px;color: #fff;text-shadow: 0 1px 1px rgba(0,0,0,.75);box-shadow: 0 2px 10px rgba(0,0,0,.75) inset;}
+
+	/*-----------------------------------------
+	List View
+	-----------------------------------------*/
+	.ui-icon, .ui-icon-searchfield:after {background-color: #277F7D;}
+	.ui-li-heading { color: #F25050; font-size: 1.1em; font-family: 'Yanone Kaffeesatz', sans-serif; font-weight: normal;}
+	.ui-li-desc {margin: -1em 0 0 0; color: #277F7D; font-family: 'Yanone Kaffeesatz', sans-serif; font-weight: normal; font-size: .8em;}
+
+	.ui-input-search input.ui-input-text {font-family: 'Yanone Kaffeesatz', sans-serif; font-weight: normal;}
+
+/*#############################################
+Global Page 
+#############################################*/
+.ui-page { -webkit-backface-visibility: hidden;background: #2BBFBD;}
+
+	/*-----------------------------------------
+	Page Header
+	-----------------------------------------*/
+	.ui-header.ui-bar-a {border-bottom:2px solid #000;margin: 0 0 5px 0;box-shadow: 0 0 5px rgba(0,0,0,.5);position: relative;z-index: 3;
+		text-shadow: 0 1px 1px #fff;
+		background: rgb(255,255,255); /* Old browsers */
+		background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(243,243,243,1) 50%, rgba(237,237,237,1) 51%, rgba(255,255,255,1) 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(50%,rgba(243,243,243,1)), color-stop(51%,rgba(237,237,237,1)), color-stop(100%,rgba(255,255,255,1))); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(243,243,243,1) 50%,rgba(237,237,237,1) 51%,rgba(255,255,255,1) 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(243,243,243,1) 50%,rgba(237,237,237,1) 51%,rgba(255,255,255,1) 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(243,243,243,1) 50%,rgba(237,237,237,1) 51%,rgba(255,255,255,1) 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(243,243,243,1) 50%,rgba(237,237,237,1) 51%,rgba(255,255,255,1) 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+	}
+	.ui-header .ui-title { }
+	.ui-header.ui-bar-a h1 {font-family: 'Pacifico', cursive; font-weight: normal; color: #F25050; font-size: 1.4em; text-overflow: visible; margin: 5px 0;}
+	.ui-header .ui-btn-right {border: none;border-radius: 0; background: url(../img/topCornerBanner.png) 0 0 no-repeat;
+		position: absolute;
+		top: -2px;
+		right: 15px;
+		height: 82px;
+		width: 42px;
+		z-index: 3;
+		outline: none;
+		box-shadow: none;
+
+	}
+	.ui-header .ui-btn-right span.ui-btn-inner {border: none; background-color: transparent;
+		position: absolute;
+		height: 25px;
+		width: 25px;
+		background-color: #235F5E;
+		top: 12px;
+		left: 7px;
+
+	}
+	.ui-header .ui-btn-right span.ui-btn-inner span.ui-icon {
+		position: absolute;
+		background-color: transparent;
+		border: none;
+		box-shadow: none;
+		margin: 4px 1px 2px 4px;
+	}
+
+	/*-----------------------------------------
+	Page Content Container
+	-----------------------------------------*/
+	.ui-content {border-top: 1px solid #175F5E; border-bottom: 1px solid #fff; box-shadow: 0 0 10px rgba(0,0,0,.5);margin: 0 0 5px 0;padding: 0 15px 15px 15px;background: url(../img/wood/001.png) 0 0 repeat;}	
+
+	/*-----------------------------------------
+	Page Footer
+	-----------------------------------------*/
+	.ui-footer.ui-bar-a {border-top: 1px solid #5FFFFC;}
+
+/*#############################################
+Thumbnail List View
+#############################################*/
+.ui-li-has-thumb .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-thumb {padding-left: 55px;}
+.ui-li-thumb, .ui-listview .ui-li-icon {left: 15px;top: 22px;}
+
+/*#############################################
+Error Validation
+#############################################*/
+#formLinkGroup {width: 100%;}
+#errorBox {color: #fff;margin: 1em 0 0 0;box-shadow: 0 .1em .5em rgba(0, 0, 0, 0.5);border: 2px solid #CF2219;border-radius: .5em;display: none;padding: 1em;list-style: none;	
+	
+	/*-----------------------------------------
+	Gradient BG
+	-----------------------------------------*/
+	background: #ff3019; /* Old browsers */
+	background: -moz-linear-gradient(top,  #ff3019 0%, #cf0404 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff3019), color-stop(100%,#cf0404)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #ff3019 0%,#cf0404 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #ff3019 0%,#cf0404 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #ff3019 0%,#cf0404 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #ff3019 0%,#cf0404 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3019', endColorstr='#cf0404',GradientType=0 ); /* IE6-9 */
+}
+.error,
+.error[type="text"] {border: 5px solid #8F0827 !important; box-shadow: 0 0 1em rgba(175, 54, 54, .25);}
+.error:focus,
+.error[type="text"]:focus {box-shadow: 0 0 1em rgba(175, 54, 54, .25);}
+.error::-webkit-input-placeholder{color: #AF2020;}
+.error:-moz-placeholder {color: #AF2020;}
+#subList.error {background: rgba(255,255,255,.45);}
+.activeError {border: 1px solid #CF2219 !important; background: rgba(255,255,255,.45); padding: .5em; font-size: 1em; color: #CF2219; border-radius: .5em;}
+.activeError li {background: rgba(255,255,255,.45); padding: 1em; font-size: 1.5em; color: #CF2219;}
+
+/*#############################################
+Error Validation
+#############################################*/
+#feature {position: relative;line-height: 15px;font-size: 13px;border-bottom: 1px solid #5FFFFC; border-top: 1px solid #000; margin: 0 0 5px 0;box-shadow: 0 0 10px rgba(255,255,255,.75);z-index: 1;
+	
+	/*-----------------------------------------
+	Gradient BG
+	-----------------------------------------*/
+	background: #ffffff; /* Old browsers */
+	background: -moz-linear-gradient(top,  #ffffff 0%, #e5e5e5 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e5e5e5)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #ffffff 0%,#e5e5e5 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #ffffff 0%,#e5e5e5 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #ffffff 0%,#e5e5e5 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #ffffff 0%,#e5e5e5 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */}
+
+/*#############################################
+Feature + Carousel
+#############################################*/
+#feature .carousel {padding: 0;margin: 0;}
+#feature .carousel div {height: 125px;}
+#feature .carousel div#item1 {background: url(../img/stock/dessertFeature.jpg) 0 0 no-repeat;background-size: cover;}
+#feature .carousel div#item2 {background: url(../img/stock/entreeFeature.jpg) 0 0 no-repeat;background-size: cover;}
+#feature .carousel nav {position: absolute; z-index: 50; bottom: 0; left: 0; background: rgba(0,0,0,.5); height: 50px; width: 100%;}
+#feature .carousel nav a,
+#feature .carousel nav ol {display: inline-block;}
+#feature .carousel nav .prev {position: absolute; width: 50px; height: 50px; background: #fff; left: 0; top: -65px; z-index: 51;}
+#feature .carousel nav .next {position: absolute; width: 50px; height: 50px; background: #fff; right: 0; top: -65px; z-index: 51;}
+#feature .carousel .scrim {width: 100%; position: absolute; bottom: 0; background: rgba(0,0,0,.75); height: 50px; border-top: 5px solid #F25050;border-bottom:1px solid #000;}
+#feature .carousel a .scrim p {color: #fff; text-shadow: 0 2px 2px black; padding: .5em; margin: 0; font-weight: normal !important;}
+
+/*#############################################
+JQM Overrides
+#############################################*/
+	
+	/*-----------------------------------------
+	Thick Well Borders
+	-----------------------------------------*/
+	.ui-listview.ui-listview-inset.ui-corner-all.ui-shadow,
+	.ui-corner-all.ui-controlgroup.ui-controlgroup-vertical {background: rgba(95,65,29,.55);padding: 5px;border-radius: 15px;box-shadow: 0 0 10px rgba(255,255,255,.75);}
+
+	.ui-input-search.ui-shadow-inset.ui-btn-corner-all.ui-btn-shadow.ui-icon-searchfield.ui-body-c,
+	.gRequired.ui-input-text.ui-body-c.ui-corner-all.ui-shadow-inset,
+	.ui-btn.ui-shadow.ui-btn-corner-all.ui-btn-icon-right.ui-btn-up-c,
+	.ui-btn.ui-shadow.ui-btn-corner-all.ui-btn-up-c,
+	#chooseDate, 
+	#flavorRange{border: 5px solid rgba(95,65,29,.55);border-radius: 30px;box-shadow: 0 1px 0px rgba(255,255,255,.75);}
+
+	.ui-listview.ui-listview-inset.ui-corner-all.ui-shadow .ui-btn-text,
+	.ui-corner-all.ui-controlgroup.ui-controlgroup-vertical .ui-btn.ui-btn-up-c {border-bottom: 4px solid rgba(95,65,29,.55);}
+
+	.ui-li-link-alt.ui-btn.ui-btn-up-c.ui-btn-icon-notext.ui-corner-tr,
+	.ui-li-link-alt.ui-btn.ui-btn-up-c.ui-btn-icon-notext {height: 94%; border-left: none;}
+
+	.ui-listview.ui-listview-inset.ui-corner-all.ui-shadow .ui-btn-text a,
+	.ui-corner-all.ui-controlgroup.ui-controlgroup-vertical .ui-btn.ui-btn-up-c span {border-bottom: 1px solid #fff; border-top: 1px solid #fff;}
+
+	.ui-listview.ui-listview-inset.ui-corner-all.ui-shadow .ui-btn-text:first-child a,
+	.ui-corner-all.ui-controlgroup.ui-controlgroup-vertical .ui-btn.ui-btn-up-c:first-child span {border-top: none;}
+
+	.ui-listview.ui-listview-inset.ui-corner-all.ui-shadow .ui-li-last .ui-btn-text,
+	.ui-listview.ui-listview-inset.ui-corner-all.ui-shadow .ui-li-last .ui-btn-text a,
+	.ui-corner-all.ui-controlgroup.ui-controlgroup-vertical .ui-btn.ui-corner-bottom.ui-controlgroup-last.ui-btn-up-c{border-bottom: none !important;}
+
+	.ui-listview-inset .ui-li {border: none; }
+
+	/*-----------------------------------------
+	Form Styling
+	-----------------------------------------*/
+	.ui-input-text,
+	.ui-field-contain label {color: rgba(95,65,29,1);}
+	#subList .ui-corner-all.ui-controlgroup.ui-controlgroup-vertical,
+	#chooseDifficulty .ui-select{margin: 8px 0 0 0;}
+	.ui-slider.ui-btn-down-c.ui-btn-corner-all {background: rgba(95,65,29,.55);border: 2px solid #7F6747;}
+	.ui-slider-handle.ui-btn.ui-shadow.ui-btn-corner-all.ui-btn-up-c {box-shadow: none; border: 2px solid #7F6747;}
+	.noRound .ui-input-text.ui-body-c.ui-corner-all.ui-shadow-inset {border-radius: 0 !important;}
+	.ui-br {border-color: #7F6747; box-shadow: 0 2px 0px rgba(127,107,71,.5);}
+
+	/*-----------------------------------------
+	Icons
+	-----------------------------------------*/
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
