@@ -30,6 +30,9 @@ Theme 3 (Jaded Greens)
 
 */
 
+
+
+
 /*#############################################
 Typography
 #############################################*/
@@ -43,7 +46,7 @@ Typography
 	/*-----------------------------------------
 	Headings
 	-----------------------------------------*/
-	h2 {margin: 0 0 0px 0;font-family: 'Pacifico', cursive; font-weight: normal; color: rgba(95,65,29,.85); font-size: 1.7em;}
+	h2 {margin: 0 0 0px 0;font-family: 'Pacifico', cursive; font-weight: normal; color: rgba(95,65,29,.85); font-size: 1.5em;}
 	#viewListPage h2 {margin: 0 0 10px 0;}
 	h5 {margin: 0;padding: 0; color: rgba(95,65,29,.85);}
 	#addItemPage h5 {background: rgba(95,65,29,.65);padding: 5px 10px;color: #fff;text-shadow: 0 1px 1px rgba(0,0,0,.75);box-shadow: 0 2px 10px rgba(0,0,0,.75) inset;}
@@ -51,12 +54,12 @@ Typography
 	/*-----------------------------------------
 	List View
 	-----------------------------------------*/
+
 	.ui-icon, .ui-icon-searchfield:after {background-color: #277F7D;}
 	.ui-li-heading { color: #F25050; font-size: 1.1em; font-family: 'Yanone Kaffeesatz', sans-serif; font-weight: normal;}
 	.ui-li-desc {margin: -1em 0 0 0; color: #277F7D; font-family: 'Yanone Kaffeesatz', sans-serif; font-weight: normal; font-size: .8em;}
 
 	.ui-input-search input.ui-input-text {font-family: 'Yanone Kaffeesatz', sans-serif; font-weight: normal;}
-
 /*#############################################
 Global Page 
 #############################################*/
@@ -78,33 +81,20 @@ Global Page
 	}
 	.ui-header .ui-title { }
 	.ui-header.ui-bar-a h1 {font-family: 'Pacifico', cursive; font-weight: normal; color: #F25050; font-size: 1.4em; text-overflow: visible; margin: 5px 0;}
-	.ui-header .ui-btn-right {border: none;border-radius: 0; background: url(../img/topCornerBanner.png) 0 0 no-repeat;
-		position: absolute;
-		top: -2px;
-		right: 15px;
-		height: 82px;
-		width: 42px;
-		z-index: 3;
-		outline: none;
-		box-shadow: none;
+	
+	/*-----------------------------------------
+	Header Right Button - Custom Banner
+	-----------------------------------------*/
+	.ui-header .ui-btn-right {border: none;border-radius: 0; background: url(../img/topCornerBanner.png) 0 0 no-repeat;position: absolute;top: -2px;right: 15px;height: 82px;width: 42px;z-index: 3;outline: none;box-shadow: none;}
+	.ui-header .ui-btn-right span.ui-btn-inner {border: none; background-color: transparent;position: absolute;height: 25px;width: 25px;background-color: #235F5E;top: 15px;left: 7px;}
+	.ui-header .ui-btn-right span.ui-btn-inner span.ui-icon {position: absolute;background-color: transparent;border: none;box-shadow: none;margin: 4px 1px 2px 4px;}
 
-	}
-	.ui-header .ui-btn-right span.ui-btn-inner {border: none; background-color: transparent;
-		position: absolute;
-		height: 25px;
-		width: 25px;
-		background-color: #235F5E;
-		top: 12px;
-		left: 7px;
-
-	}
-	.ui-header .ui-btn-right span.ui-btn-inner span.ui-icon {
-		position: absolute;
-		background-color: transparent;
-		border: none;
-		box-shadow: none;
-		margin: 4px 1px 2px 4px;
-	}
+	/*-----------------------------------------
+	Header Left Button
+	-----------------------------------------*/
+	.ui-header .ui-btn-left.ui-btn-icon-notext {top: 12px !important; left: 1em; border-color: #209190;}
+	.ui-header .ui-btn-left span.ui-btn-inner {background: #209190;}
+	.ui-header .ui-btn-left span.ui-btn-inner span.ui-icon {margin: 2px 1px 2px 3px; background-color: #144F4E; box-shadow: none;}
 
 	/*-----------------------------------------
 	Page Content Container
@@ -179,7 +169,7 @@ Feature + Carousel
 #feature .carousel nav ol {display: inline-block;}
 #feature .carousel nav .prev {position: absolute; width: 50px; height: 50px; background: #fff; left: 0; top: -65px; z-index: 51;}
 #feature .carousel nav .next {position: absolute; width: 50px; height: 50px; background: #fff; right: 0; top: -65px; z-index: 51;}
-#feature .carousel .scrim {width: 100%; position: absolute; bottom: 0; background: rgba(0,0,0,.75); height: 50px; border-top: 5px solid #F25050;border-bottom:1px solid #000;}
+#feature .carousel .scrim {width: inherit; position: absolute; bottom: 0; background: rgba(0,0,0,.75); height: 50px; border-top: 5px solid #F25050;border-bottom:1px solid #000; padding: 0 1em;}
 #feature .carousel a .scrim p {color: #fff; text-shadow: 0 2px 2px black; padding: .5em; margin: 0; font-weight: normal !important;}
 
 /*#############################################
@@ -221,7 +211,7 @@ JQM Overrides
 	Form Styling
 	-----------------------------------------*/
 	.ui-input-text,
-	.ui-field-contain label {color: rgba(95,65,29,1);}
+	.ui-field-contain label {color: rgba(95,65,29,1); font-family: 'Yanone Kaffeesatz', sans-serif; font-weight: normal; font-size: 1.2em;}
 	#subList .ui-corner-all.ui-controlgroup.ui-controlgroup-vertical,
 	#chooseDifficulty .ui-select{margin: 8px 0 0 0;}
 	.ui-slider.ui-btn-down-c.ui-btn-corner-all {background: rgba(95,65,29,.55);border: 2px solid #7F6747;}
@@ -233,10 +223,6 @@ JQM Overrides
 	Icons
 	-----------------------------------------*/
 		
-
-
-
-
 
 
 
