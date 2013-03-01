@@ -609,7 +609,7 @@ $('#indexPage').live('pageshow',function(event){
 $('#indexPage').live('pagehide',function(event){$('.browseCat').off('click')});
 
 $('#viewListPage').live('pagebeforeshow',function(event){
-	var clearDataLink			= $('#clearDataLink');
+	
 		//Populate Data List
 	
 	if(!globalCategory.length) {
@@ -617,11 +617,12 @@ $('#viewListPage').live('pagebeforeshow',function(event){
 	} else {
 		buildDataList(globalCategory);
 	};
-	clearDataLink.bind('click', clearLocalData);
+	$('#clearDataLink').on('click', clearLocalData);
 	$('.recipeLink').bind('click', setItemKey);			
 });
 $('#viewListPage').live('pagehide',function(event){
 	$('#dataList').empty();
+	$('#clearDataLink').off('click');
 	globalCategory = '';
 });
 
