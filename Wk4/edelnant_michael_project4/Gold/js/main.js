@@ -3,7 +3,7 @@
 // Course: MIU 1302
 // Instructor: Robin Alarcon
 // --------------------------------------------------------------------------- /
-// Project 2 | Main.js
+// Project 4 | Main.js
 // --------------------------------------------------------------------------- /
 
 
@@ -17,7 +17,7 @@ function ge(x){
 function buildSelect(argLocation,argLabel,argArray) {
 	//Build Label
 	var difficultyLabel = document.createElement('label');
-	difficultyLabel.innerHTML = argLabel + ":&nbsp;<em>*</em>";
+	difficultyLabel.innerHTML = argLabel + ":&nbsp;<em>* (Required)</em>";
 	
 
 	//Build Select
@@ -383,12 +383,6 @@ function buildListItemLinks(itemKey, targetListItem) {
 	editBtn.innerHTML 	= 'Edit';
 	editBtn.addEventListener('click', setItemKey);
 
-	//Build Delete Btn
-	//deleteBtn.setAttribute('class','gBtn gDelete');
-	//deleteBtn.key 		= itemKey;
-	//deleteBtn.href 		= '#';
-	//deleteBtn.innerHTML = 'Delete';
-	//deleteBtn.addEventListener('click', deleteListItem);
 
 	//Add newly created elements to dom
 	targetListItem.appendChild(editBtn);

@@ -2,7 +2,7 @@
 <!-- ##############################################
 Term:       1302
 Author:     Michael Edelnant
-Project:    Project 2
+Project:    Project 4
 Course:     MIU
 Instructor: Robin Alarcon
 File Name:  index.html
@@ -56,35 +56,35 @@ File Name:  index.html
                     <li>
                         <a href="#viewListPage" class="browseCat" data-transition="slide" data-category="Snack">
                             <img src="img/Snack.png" />
-                            <h3>Snack</h3>
+                            <h3>Snacks</h3>
                             <p>Find that perfect snack for a mid day refuel.</p>
                         </a>
                     </li>
                     <li>
                         <a href="#viewListPage" class="browseCat" data-transition="slide" data-category="Appetizer">
                             <img src="img/Appetizer.png" />
-                            <h3>Appetizer</h3>
+                            <h3>Appetizers</h3>
                             <p>Who doesn't love appetizers? Not this dev!</p>
                         </a>
                     </li>
                     <li>
                         <a href="#viewListPage" class="browseCat" data-transition="slide" data-category="Entree">
                             <img src="img/Entree.png" />
-                            <h3>Entree</h3>
+                            <h3>Entrees</h3>
                             <p>Browse the most frequented category of this app.</p>
                         </a>
                     </li>
                     <li>
                         <a href="#viewListPage" class="browseCat" data-transition="slide" data-category="Dessert">
                             <img src="img/Dessert.png" />
-                            <h3>Dessert</h3>
+                            <h3>Desserts</h3>
                             <p>The most favorited category aside from entrees.</p>
                         </a>
                     </li>
                     <li>
                         <a href="#viewListPage" class="browseCat" data-transition="slide" data-category="Other">
                             <img src="img/Other.png" />
-                            <h3>Other</h3>
+                            <h3>Others</h3>
                             <p>We care about the recipes that don't fit in.</p>
                         </a>
                     </li>
@@ -119,11 +119,11 @@ File Name:  index.html
                         <ul id="errorBox">
                         </ul>
                         <div data-role="fieldcontain">
-                            <label for="recipeTitle">Recipe Title :&nbsp;<em>*</em></label>
+                            <label for="recipeTitle">Recipe Title :&nbsp;<em>* (Required)</em></label>
                             <input type="text" id="recipeTitle" class="gRequired" placeholder="Title of your recipe" />
                         </div>
                         <div data-role="fieldcontain">
-                            <label for="recipeSummary">Small Description :&nbsp;<em>*</em></label>
+                            <label for="recipeSummary">Small Description :&nbsp;<em>* (Required)</em></label>
                             <input type="text" id="recipeSummary" class="gRequired" placeholder="Quick description" />
                         </div>
                         <div data-role="fieldcontain" id="chooseDifficulty">
@@ -155,22 +155,21 @@ File Name:  index.html
                             <input type="range" value="50" max="100" min="0" id="flavorRange" />
                         </div>
                         <div data-role="fieldcontain">
-                            <label>Ingredients*</label>
+                            <label>Ingredients<em>* (Required)</em></label>
                             <div>
                                 <ul data-role="listview" data-inset="true" data-split-icon="delete" id="gIngredientContainer"></ul>
                             </div>
-                             <a href="#" id="gAddIngredient" data-role="button" class="gBtn">Add Ingredient</a>
+                             <a href="#" id="gAddIngredient" data-role="button" data-theme="e" class="gBtn">Add Ingredient</a>
                         </div>                     
                         <div data-role="fieldcontain" class="noRound">
-                            <label for="directions">Instructions :&nbsp;<em>*</em></label>
-                            <textarea name="directions" id="directions" class="gRequired" placeholder="Place your detailed instructions here."></textarea>
+                            <label for="directions">Instructions :&nbsp;<em>* (Required)</em></label>
+                            <textarea name="directions" id="directions" class="gRequired"></textarea>
                         </div>                        
                    </fieldset>
-                    <fieldset class="ui-grid-a">
-                        <div class="ui-block-a"><input type="button"  data-role="button" value="Save" id="submitForm"/></div>
-                        <div class="ui-block-b"><input type="button"  data-role="button" value="Delete" id="deleteItem"/></div>
-                    </fieldset>
-                    <a href="#viewListPage" data-transition="slide">View Recipe List</a>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a"><input type="button"  data-role="button" value="Save" data-theme="g" id="submitForm"/></div>
+                        <div class="ui-block-b"><input type="button"  data-role="button" value="Delete" data-theme="f" id="deleteItem"/></div>
+                    </div>
                 </form>                                               
             </section> 
             <footer data-role="footer" data-id="appFooter">
@@ -221,7 +220,7 @@ File Name:  index.html
                 <ul id="dataList" data-role="listview" data-filter="true" data-inset="true" data-split-icon="gear">
 
                 </ul>
-                <a href="#indexPage" data-role="button" id="clearDataLink">Clear Data</a><br />            
+                <a href="#indexPage" data-role="button" id="clearDataLink" data-theme="f">Clear Data</a><br />            
             </section>
             <footer data-role="footer" data-id="appFooter">
                 <div data-role="navbar">
@@ -364,7 +363,7 @@ File Name:  index.html
             </header>
             <section data-role="content" id="mainContent">
                 <h2>About</h2>
-                <div data-role="controlgroup">
+                <div data-role="controlgroup" class="custom">
                     <a href="#indexPage" data-role="button" data-transition="slide" data-direction="reverse">Gold App</a>
                     <a href="../Bronze/index.html" data-role="button" data-ajax="false">Bronze App</a>
                     <a href="https://github.com/medelnant/MIU/tree/master/Wk2/edelnant_michael_project2" data-role="button" data-ajax="false">Github</a>                    
