@@ -223,12 +223,7 @@ Global Page
 				box-shadow: 0 1px 2px #8F2C2C inset;
 			} 	
 
-	/*-----------------------------------------
-	Hover,Click,Active
-	-----------------------------------------*/
-	.ui-btn-down-c,
-	.ui-btn-hover-c,
-	.ui-btn-active {background:yellow;}
+
 
 
 /*#############################################
@@ -396,14 +391,14 @@ JQM Overrides
 	.ui-li.ui-li-divider.ui-bar-b.ui-li-has-count {
 		border-bottom: 2px solid #2C4F4E;
 		text-shadow: 0 -1px 0 #456F6D;
-background: rgb(127,204,204); /* Old browsers */
-background: -moz-linear-gradient(top,  rgba(127,204,204,1) 0%, rgba(29,140,138,1) 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(127,204,204,1)), color-stop(100%,rgba(29,140,138,1))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  rgba(127,204,204,1) 0%,rgba(29,140,138,1) 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  rgba(127,204,204,1) 0%,rgba(29,140,138,1) 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  rgba(127,204,204,1) 0%,rgba(29,140,138,1) 100%); /* IE10+ */
-background: linear-gradient(to bottom,  rgba(127,204,204,1) 0%,rgba(29,140,138,1) 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7fcccc', endColorstr='#1d8c8a',GradientType=0 ); /* IE6-9 */
+		background: rgb(127,204,204); /* Old browsers */
+		background: -moz-linear-gradient(top,  rgba(127,204,204,1) 0%, rgba(29,140,138,1) 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(127,204,204,1)), color-stop(100%,rgba(29,140,138,1))); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  rgba(127,204,204,1) 0%,rgba(29,140,138,1) 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  rgba(127,204,204,1) 0%,rgba(29,140,138,1) 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  rgba(127,204,204,1) 0%,rgba(29,140,138,1) 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  rgba(127,204,204,1) 0%,rgba(29,140,138,1) 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7fcccc', endColorstr='#1d8c8a',GradientType=0 ); /* IE6-9 */
 
 	}
 	.ui-li.ui-li-divider.ui-bar-b.ui-li-has-count .ui-li-count {background: #2C4F4E; box-shadow: 0 2px 2px #000 inset; color: #fff; border: none; text-shadow: 0 1px 0 #000; top: 18px;}
