@@ -317,6 +317,7 @@ function buildItemPage() {
 	recipeContainer.empty();
 	
 	//Create Page Elements
+	var recipeContent				= document.createElement('article');
 	var pageTitle 					= document.createElement('h2');
 	var pageDescription				= document.createElement('p');
 	var pageDifficulty				= document.createElement('p');
@@ -335,8 +336,8 @@ function buildItemPage() {
 	pageCategory.innerHTML 			= "<strong>Category:</strong> " + recipe.rCategory[1];
 	pageDate.innerHTML				= "<strong>Date:</strong> " + recipe.rDate[1];
 	pageFlavor.innerHTML			= "<strong>Flavor:</strong> " + recipe.rFlavor[1];
-	pageDirections.innerHTML		= "<strong>Directions:</strong><br />" + recipe.rDirections[1];
-	pageIngWrapper.innerHTML 		= "<strong>Ingredients</strong><br />";
+	pageDirections.innerHTML		= "<strong>Directions:</strong>" + recipe.rDirections[1];
+	pageIngWrapper.innerHTML 		= "<strong>Ingredients</strong>";
 
 	//Build List
 	var ingArray = recipe.rIngredients[1].toString().split(',')
@@ -349,13 +350,14 @@ function buildItemPage() {
 
 	//Put Page Together
 	recipeContainer.append(pageTitle);
-	recipeContainer.append(pageDate);		
-	recipeContainer.append(pageDescription);
-	recipeContainer.append(pageCategory);
-	recipeContainer.append(pageFlavor);				
-	recipeContainer.append(pageDifficulty);
-	recipeContainer.append(pageIngWrapper);		
-	recipeContainer.append(pageDirections);
+	recipeContent.appendChild(pageDate);		
+	recipeContent.appendChild(pageDescription);
+	recipeContent.appendChild(pageCategory);
+	recipeContent.appendChild(pageFlavor);				
+	recipeContent.appendChild(pageDifficulty);
+	recipeContent.appendChild(pageIngWrapper);		
+	recipeContent.appendChild(pageDirections);
+	recipeContainer.append(recipeContent);
 
 	//Reset Global Item Key
 	editItemKey = '';
@@ -401,7 +403,6 @@ function clearItemKey() {
 
 function editListItem() {			
 	//Get data from localstorage
-	alert('editing Item I think');
 	var value = localStorage.getItem(editItemKey);
 	var recipeItem = JSON.parse(value);
 	
@@ -637,6 +638,7 @@ $('#addItemPage').live('pagebeforeshow',function(event){
 	//Disable delete Button on pagebeforeshow
 	$('#deleteItem').button('disable').button('refresh');
 	if(editItemKey.length > 0) {
+		
 		//Pass key around for deleteListItem Function to pull from
 		deleteItemKey = editItemKey;
 		$('#deleteItem').button('enable').button('refresh');

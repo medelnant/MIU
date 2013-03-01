@@ -376,21 +376,17 @@ JQM Overrides
 	-----------------------------------------*/
 
 
-	.ui-li-link-alt.ui-btn.ui-btn-up-c.ui-btn-icon-notext .ui-btn-inner .ui-btn.ui-btn-up-b.ui-shadow.ui-btn-corner-all.ui-btn-icon-notext{
-		background: #53A9A8 !important;
-		border-color: #53A9A8;
-	}
-	.ui-li-link-alt.ui-btn.ui-btn-up-c.ui-btn-icon-notext .ui-btn-inner .ui-btn.ui-btn-up-b.ui-shadow.ui-btn-corner-all.ui-btn-icon-notext .ui-icon.ui-icon-gear.ui-icon-shadow {
-		background-color: #144F4E !important;
-	}
+	.ui-li-link-alt.ui-btn.ui-btn-up-c.ui-btn-icon-notext .ui-btn-inner .ui-btn.ui-btn-up-b.ui-shadow.ui-btn-corner-all.ui-btn-icon-notext{background: #53A9A8 !important;border-color: #53A9A8;}
+	.ui-li-link-alt.ui-btn.ui-btn-up-c.ui-btn-icon-notext .ui-btn-inner .ui-btn.ui-btn-up-b.ui-shadow.ui-btn-corner-all.ui-btn-icon-notext .ui-icon.ui-icon-gear.ui-icon-shadow {background-color: #144F4E !important;}
 	.gRemoveIngredient .ui-btn-inner .ui-icon {background-color: #144F4E !important;}
 
- {border: 5px solid rgba(95,65,29,.55);}
 
 
-	.ui-li.ui-li-divider.ui-bar-b.ui-li-has-count {
-		border-bottom: 2px solid #2C4F4E;
-		text-shadow: 0 -1px 0 #456F6D;
+	.ui-li.ui-li-divider.ui-bar-b.ui-li-has-count {border-bottom: 2px solid #2C4F4E;text-shadow: 0 -1px 0 #456F6D;
+
+		/*-----------------------------------------
+		Gradient BG
+		-----------------------------------------*/		
 		background: rgb(127,204,204); /* Old browsers */
 		background: -moz-linear-gradient(top,  rgba(127,204,204,1) 0%, rgba(29,140,138,1) 100%); /* FF3.6+ */
 		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(127,204,204,1)), color-stop(100%,rgba(29,140,138,1))); /* Chrome,Safari4+ */
@@ -402,17 +398,33 @@ JQM Overrides
 
 	}
 	.ui-li.ui-li-divider.ui-bar-b.ui-li-has-count .ui-li-count {background: #2C4F4E; box-shadow: 0 2px 2px #000 inset; color: #fff; border: none; text-shadow: 0 1px 0 #000; top: 18px;}
-		
-
-
 	.ui-li.ui-li-static.ui-btn-up-c {border-bottom: 4px solid #A38358; background: #fff; text-shadow:none; font-weight: normal;}
 	.ui-li.ui-li-static.ui-btn-up-c .ui-li-heading {margin: 0 0 .5em 0;}
 	.ui-li.ui-li-static.ui-btn-up-c .ui-li-desc strong {text-shadow: 0 0 0 #fff !important; font-weight: normal !important;}
 	.ui-li.ui-li-static.ui-btn-up-c.ui-li-last {border-bottom: none;}
 	.ui-li.ui-li-static.ui-btn-up-c .ui-li-aside.ui-li-desc {background: transparent; position: absolute; width: auto; right: 1em; top: 25px;}
 
+/*#############################################
+Recipe Page
+#############################################*/	
 
-/*Custom Btns*/
+#viewItemPage #viewItemContent {padding-top: 1em !important;}
+#viewItemPage #viewItemContent h2 {border-bottom: 1px solid #7F6747; box-shadow: 0 2px 0px rgba(127,107,71,.5); margin-bottom: .5em;}
+#viewItemPage #viewItemContent article {padding: 1em;border: 5px solid #A38358;font-family: 'Yanone Kaffeesatz', sans-serif; font-weight: normal; color: #7F7F7F;
+box-shadow: 0 0 10px #A38358; border-radius: .5em;
+background: rgb(255,255,255); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(249,246,234,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(249,246,234,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(249,246,234,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(249,246,234,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(249,246,234,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(249,246,234,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f9f6ea',GradientType=0 ); /* IE6-9 */
+
+}
+#viewItemPage #viewItemContent article strong {font-weight: normal; display: block; color: #209290; font-size: 1.2em;}
+#viewItemPage #viewItemContent article ul,
+#viewItemPage #viewItemContent article p {margin-top: 0; margin-bottom: 5px;}
 
 
 
